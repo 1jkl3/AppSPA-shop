@@ -1,21 +1,26 @@
 <template>
   <div id="home">
-	  <head-nav></head-nav>
+	  <head-nav class="nav"/>
+	  <home-swiper/>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import HeadNav from 'components/common/headnav/HeadNav'
+import HomeSwiper from './childCom/HomeSwiper'
 export default {
   name: 'home',
   components: {
-	  HeadNav
+	  HeadNav,
+	  HomeSwiper
   }
 }
 </script>
 <style>
 	#home{
 		
+	}
+	.nav{
+		box-shadow: 0px 2px 0.2px red;
 	}
 </style>

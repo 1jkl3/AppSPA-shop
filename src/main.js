@@ -3,8 +3,13 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import Router from 'vue-router'
+
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
+
 import 'normalize.css'
 import './assets/css/style.css'
+Vue.use(VueAwesomeSwiper)
 Vue.config.productionTip = false
 const originalPush = Router.prototype.push
 Router.prototype.push = function push(location) {
