@@ -9,9 +9,7 @@
 <script>
 
 export default {
-  name: 'HeadNav',
-  components: {
-  }
+  name: 'HeadNav'
 }
 </script>
 <style>
@@ -19,10 +17,10 @@ export default {
 		display: flex;
 		height: 44px;
 		line-height: 44px;
+		text-align: center;
 	}
 	.nav-center{
 		flex: 1;
-		background-color: red;
 	}
 	.nav-left,.nav-right{
 		width: 13%;

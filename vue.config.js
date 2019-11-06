@@ -1,17 +1,50 @@
-const path = require('path');
+const path = require('path')
+const express = require('express')
+const app = express()
+var appData = require('./src/assets/json/list.json')
+var appData1 = require('./src/assets/json/recom.json')
+var appData2 = require('./src/assets/json/goods/pop.json')
+var appData3 = require('./src/assets/json/goods/news.json')
+var appData4 = require('./src/assets/json/goods/sell.json')
+var list = appData.person
+var recom = appData1.person
+var pop = appData2.pop
+var news = appData3.news
+var sell = appData4.sell
+var apiRouter = express.Router()
+app.use('/api',apiRouter)
 function resolve (dir) {
     return path.join(__dirname, dir)
 }
-console.log("22")
 module.exports = {
+	outputDir:'dist',
     lintOnSave: true,
     chainWebpack: (config)=>{
         config.resolve.alias
-            // .set('@', resolve('src'))
+            .set('@', resolve('src'))
             .set('assets',resolve('src/assets'))
             .set('components',resolve('src/components'))
-            .set('layout',resolve('src/layout'))
-            .set('base',resolve('src/base'))
-            .set('static',resolve('src/static'))
-    }
+    },
+	devServer: {
+	  host: '192.168.137.1',
+	  port: 8060,
+	  proxy: null, // 设置代理
+	  before: app => {
+		  app.get('/api/list',function(req,res){
+			  res.json({code:0,data:list})
+		  });
+		  app.get('/api/recom',function(req,res){
+			  res.json({code:0,data:recom})
+		  });
+		  app.get('/api/pop',function(req,res){
+			  res.json({code:0,data:pop})
+		  });
+		  app.get('/api/news',function(req,res){
+			  res.json({code:0,data:news})
+		  });
+		  app.get('/api/sell',function(req,res){
+		  	  res.json({code:0,data:sell})
+		  });
+	  }
+	 }
 }

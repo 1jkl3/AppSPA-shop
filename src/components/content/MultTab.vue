@@ -37,4 +37,13 @@
 	.iconfont{
 		font-size: 26px;
 	}
+	.tab-list{
+		position: fixed;
+		left: 0px;
+		right: 0px;
+		bottom: 0px;
+	}
+	.tab-list span{
+		font-size: 12px;
+	}
 </style>

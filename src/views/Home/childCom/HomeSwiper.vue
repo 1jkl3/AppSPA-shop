@@ -1,10 +1,10 @@
 <template>
 	<div class="swiper-active">
 		<swiper :options="swiperOption">
-		    <swiper-slide><img src="@/assets/img/TB1Ih7cj.T1gK0jSZFhXXaAtVXa-520-280.jpg_q90_.webp"></swiper-slide>
-		    <swiper-slide><img src="@/assets/img/TB1tVbMia67gK0jSZFHSuu9jVXa.jpg"></swiper-slide>
-		    <swiper-slide><img src="@/assets/img/TB1VESgj7L0gK0jSZFxSutWHVXa.jpg"></swiper-slide>
-		    <swiper-slide><img src="@/assets/img/TB1562Aj7P2gK0jSZPxXXacQpXa-520-280.jpg_q90_.webp"></swiper-slide>
+		    <swiper-slide><img src="@/assets/img/TB1Ih7cj.T1gK0jSZFhXXaAtVXa-520-280.jpg_q90_.webp" @load="imgload"></swiper-slide>
+		    <swiper-slide><img src="@/assets/img/TB1tVbMia67gK0jSZFHSuu9jVXa.jpg" @load="imgload"></swiper-slide>
+		    <swiper-slide><img src="@/assets/img/TB1VESgj7L0gK0jSZFxSutWHVXa.jpg" @load="imgload"></swiper-slide>
+		    <swiper-slide><img src="@/assets/img/TB1562Aj7P2gK0jSZPxXXacQpXa-520-280.jpg_q90_.webp" @load="imgload"></swiper-slide>
 			<div class="swiper-pagination"  slot="pagination"></div>
 		</swiper>
 	</div>
@@ -32,6 +32,15 @@
 					loop:true,
 					speed: 1500,
 					lazyLoading :true
+				},
+				istab:false
+			}
+		},
+		methods:{
+			imgload(){
+				if(!this.istab){
+					this.$emit("imgload")
+					this.istab=true
 				}
 			}
 		}
@@ -41,7 +50,7 @@
 <style>
 	.swiper-active{
 		height: 200px;
-		border-bottom: 10px solid #eee;
+		/* border-bottom: 10px solid #eee; */
 	}
 	.swiper-active img{
 		height:200px

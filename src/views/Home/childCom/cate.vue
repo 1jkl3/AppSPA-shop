@@ -1,18 +1,21 @@
 <template>
-	<div class="tab-nav">
-		<slot></slot>
+	<div class="cate">
+		<div>
+			<slot></slot>
+		</div>
 	</div>
 </template>
 
 <script>
 	export default {
-		name:'TabBar'
+		name:'cate',
+		
 	}
 </script>
 
 <style>
-	.tab-nav{
-		height: 49px;
+	.cate{
 		display: flex;
+		text-align: center;
 	}
 </style>
