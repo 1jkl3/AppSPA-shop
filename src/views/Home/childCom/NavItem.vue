@@ -1,9 +1,9 @@
 <template>
 	<div class="nav-item">
 		<head-nav>
-			<div slot='left'><i class="iconfont">&#xe63c;</i></div>
-			<div slot='center'><span>XX商城</span></div>
-			<div slot='right'><i class="iconfont">&#xe618;</i></div>
+			<template #left><i class="iconfont">&#xe63c;</i></template>
+			<template #center><span>XX商城</span></template>
+			<template #right><i class="iconfont">&#xe618;</i></template>
 		</head-nav>
 	</div>
 </template>

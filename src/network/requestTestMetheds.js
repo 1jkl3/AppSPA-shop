@@ -1,8 +1,11 @@
 import {request} from './request.js'
-
-export function getTest(){
-	
+export function getpop(){
+	return request({
+		url: `/api/pop`
+	})
 }
-export function getHttp(){
-	
+export function getnews(){
+	return request({
+		url: `/api/pop`
+	})
 }

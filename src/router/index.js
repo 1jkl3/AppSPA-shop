@@ -39,6 +39,14 @@ const routes = [{
 			title:'购物车'
 		}
 	},
+	{
+		path:'/detail',
+		name:'detail',
+		component:() => import('../views/Detail/detail.vue'),
+		meta:{
+			title:'商品详情页'
+		}
+	}
 ]
 
 const router = new VueRouter({

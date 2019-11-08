@@ -1,7 +1,4 @@
 import axios from 'axios'
-// function getData(url,params){
-// 	axios.get(url,params)
-// }
 export function request(config){
 	const instance = axios.create({
 		baseURL:'http://192.168.137.1:8060',
@@ -20,8 +17,3 @@ export function request(config){
 	
 	return instance(config)
 }
-// .then(result=>{
-// 		return result
-// 	}).catch(e=>{
-// 		return e
-// 	})

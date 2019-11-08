@@ -1,8 +1,7 @@
 <template>
-	<div class="goods-list-item">
+	<div class="goods-list-item" @click="goodClick">
 		<div class="goods-item-img">
 			<img :src="require('@/assets/'+this.listdata.img)" />
-			<!-- <img :src="require('@/assets/img/list/7a695b382e.jpg')"/> -->
 		</div>
 		<div class="goods-item-txt">
 			<p>{{listdata.title}}</p>
@@ -26,12 +25,15 @@
 				default:()=>{}
 			}
 		},
-		created(){
-		},
-		beforeUpdate(){
-			this.$nextTick(function(){
-			// console.log(this.listdata)
-			})
+		methods:{
+			goodClick(){
+				this.$router.push({
+					path:'/detail',
+					query:{
+						id:1
+					}
+				})
+			}
 		}
 	}
 </script>
