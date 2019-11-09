@@ -69,6 +69,67 @@
 				"img/list/7a695b382e.jpg",
 				"img/list/7a695b382e.jpg",
 				"img/list/7a695b382e.jpg"
+			],
+      "productInfo":{
+        "title":"【新品】爆款网红新品连衣裙||主打性价比优势",
+				"oldprice":168,
+				"newprice":138,
+				"sales":5280,
+				"collect":188,
+				"deliveryTime":"72小时发货"
+      },
+      "shopInfo":{
+				"allSales":55000,
+				"alldetail":208,
+				"describe":4.5,
+				"priceParma":5,
+				"massMay":4.54
+			},
+			"shopParameter":{
+				"clothSize":["尺码","S","M","L","XL"],
+				"bust":[100,104,108,112],
+				"sleeve":[61,62,63,64],
+				"outseam":[96,97,98,99],
+				"shoulder":[36,37,38,39],
+				"clothesLength":[54,55,56,57],
+				"thickness":"普通",
+				"factoryName":"美衣服梦莎服饰有限公司",
+				"color":"上衣+外套",
+				"size":"S,M,L,XL",
+				"season":"秋季",
+				"style":"衣裤套装",
+				"manner":"通勤(OL)",
+				"tide":"韩系"
+			},
+      "comment":[
+				{
+					"userId":"1234815",
+					"userHead":"img/TB1Ih7cj.T1gK0jSZFhXXaAtVXa-520-280.jpg_q90_.webp",
+					"username":"水上漂流记",
+					"usermsg":"不喜欢这一款，客服态度恶劣，我已经无言以对，差评",
+					"commentTime":"2018-08-31",
+					"productColor":"上衣+裤子",
+					"productSize":"M",
+					"productImg":"img/list/7a695b382e.jpg",
+					"addComment":[
+						{
+							"userId":"1234846",
+							"userHead":"img/TB1Ih7cj.T1gK0jSZFhXXaAtVXa-520-280.jpg_q90_.webp",
+							"username":"店主",
+							"usermsg":"您好，实在抱歉，我们这边会做出补偿的，请您追评加星哦！",
+							"commentTime":"2018-09-01",
+							"productImg":"img/list/7a695b382e.jpg"
+						},
+            {
+							"userId":"1233246",
+							"userHead":"img/TB1Ih7cj.T1gK0jSZFhXXaAtVXa-520-280.jpg_q90_.webp",
+							"username":"姐妹花",
+							"usermsg":"姐妹，这家店真就这么差吗？本来我打算买来着，看到你这里我没动力了",
+							"commentTime":"2018-09-01",
+							"productImg":"img/list/7a695b382e.jpg"
+						}
+					]
+				}
 			]
 		}
 	]
