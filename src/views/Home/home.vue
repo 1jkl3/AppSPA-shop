@@ -68,7 +68,7 @@
 		},
 		methods: {
 			/**
-			 * 显示回到顶部事件
+			 * 显示回到顶部按钮
 			 * @param {Object} poc
 			 */
 			sctop(poc){
@@ -150,19 +150,16 @@
 					console.log(e)
 				})
 			},
-			getgoods: function() {
-				request({
-					url: `/api/goods/${this.currentype}`
-				}).then(res => {
-					this.goodlist.push(...res.data)
-				}).catch(e => {
-					console.log(e)
-				})
-			},
+			/**
+			 * tabcoll动态位置
+			 */
 			swiperimgload(){
 				this.tabloadoffsetTop=this.$refs.tabcoll.$el.offsetTop+90
 			}
 		},
+		/**
+		 * 发送请求
+		 */
 		created() {
 			//初始化
 			this.$nextTick(function() {
@@ -174,7 +171,7 @@
 		}
 	}
 </script>
-<style>
+<style scoped>
 	#home {
 		height: 100vh;
 	}

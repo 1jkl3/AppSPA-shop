@@ -12,13 +12,10 @@
 			goodsListItem
 		},
 		props:{
-			goodslistdata:Array,
-			default:()=>{
-				return []
-			}
-		},
-		beforeUpdate(){
-			// console.log(this.goodslistdata)
+			goodslistdata:{
+					type:Array,
+					default:null
+				}
 		}
 	}
 </script>

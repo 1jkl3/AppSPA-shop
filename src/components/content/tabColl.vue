@@ -8,6 +8,7 @@
 </template>
 
 <script>
+	import {throttle} from '@/common/util/throttle.js'
 	export default {
 		name: 'tabColl',
 		props: {

@@ -4,7 +4,7 @@ function format(str){
 }
 //数值超过三/四位数去掉0换成指定字符串
 function giveformat(num,type) {
-	if(num>999){
+	if(9999>num>999){
 		return (num / 1000) + type
 	}else if(num > 9999){
 		return (num / 10000) + type

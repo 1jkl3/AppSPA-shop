@@ -14,11 +14,6 @@
 <script>
 	export default {
 		name:'goodsListItem',
-		data(){
-			return{
-				
-			}
-		},
 		props:{
 			listdata:{
 				type:Object,
@@ -30,7 +25,7 @@
 				this.$router.push({
 					path:'/detail',
 					query:{
-						id:1
+						id:this.listdata.id
 					}
 				})
 			}

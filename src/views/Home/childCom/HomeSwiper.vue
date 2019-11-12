@@ -5,7 +5,7 @@
 		    <swiper-slide><img src="@/assets/img/TB1tVbMia67gK0jSZFHSuu9jVXa.jpg" @load="imgload"></swiper-slide>
 		    <swiper-slide><img src="@/assets/img/TB1VESgj7L0gK0jSZFxSutWHVXa.jpg" @load="imgload"></swiper-slide>
 		    <swiper-slide><img src="@/assets/img/TB1562Aj7P2gK0jSZPxXXacQpXa-520-280.jpg_q90_.webp" @load="imgload"></swiper-slide>
-			<div class="swiper-pagination"  slot="pagination"></div>
+			<template #pagination><div class="swiper-pagination"></div></template>
 		</swiper>
 	</div>
 </template>

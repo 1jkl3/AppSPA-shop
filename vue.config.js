@@ -6,11 +6,13 @@ var appData1 = require('./src/assets/json/recom.json')
 var appData2 = require('./src/assets/json/goods/pop.json')
 var appData3 = require('./src/assets/json/goods/news.json')
 var appData4 = require('./src/assets/json/goods/sell.json')
+var appData5 = require('./src/assets/json/details/product.json')
 var list = appData.person
 var recom = appData1.person
 var pop = appData2.pop
 var news = appData3.news
 var sell = appData4.sell
+var product = appData5.details
 var apiRouter = express.Router()
 app.use('/api',apiRouter)
 function resolve (dir) {
@@ -44,6 +46,9 @@ module.exports = {
 		  });
 		  app.get('/api/sell',function(req,res){
 		  	  res.json({code:0,data:sell})
+		  });
+		  app.get('/api/product',function(req,res){
+		  	  res.json({code:0,data:product})
 		  });
 	  }
 	 }

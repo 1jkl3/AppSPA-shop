@@ -37,7 +37,6 @@
 		},
 		methods:{
 			backUp(){
-				console.log("ad")
 				this.$router.back()
 			},
 			detailActiveUp(index){
