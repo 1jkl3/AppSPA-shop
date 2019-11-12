@@ -533,6 +533,7 @@
 				"img/list/7a695b382e.jpg",
 				"img/list/7a695b382e.jpg"
 			],
+<<<<<<< HEAD
 			"productInfo":{
 				"title":"【新品】爆款网红新品连衣裙||主打性价比优势",
 				"oldprice":178,
@@ -544,12 +545,24 @@
 			"shopInfo":{
 				"shopImg":"img/userhead/zj2.jpg",
 				"shopName":"优米女孩",
+=======
+      "productInfo":{
+        "title":"【新品】爆款网红新品连衣裙||主打性价比优势",
+				"oldprice":168,
+				"newprice":138,
+				"sales":5280,
+				"collect":188,
+				"deliveryTime":"72小时发货"
+      },
+      "shopInfo":{
+>>>>>>> f9d2bb031cc3e739b86d004d905603e630abaec6
 				"allSales":55000,
 				"alldetail":208,
 				"describe":4.5,
 				"priceParma":5,
 				"massMay":4.54
 			},
+<<<<<<< HEAD
 			"detailImage":{
 				"anchor":"【新品】爆款网红新品连衣裙||主打性价比优势主打性价比优势",
 				"key":"穿着展示",
@@ -561,6 +574,8 @@
 					"img/deatil/5.jpg"
 				]
 			},
+=======
+>>>>>>> f9d2bb031cc3e739b86d004d905603e630abaec6
 			"shopParameter":{
 				"clothSize":["尺码","S","M","L","XL"],
 				"bust":[100,104,108,112],
@@ -577,6 +592,7 @@
 				"manner":"通勤(OL)",
 				"tide":"韩系"
 			},
+<<<<<<< HEAD
 			"comment":[
 				{
 					"userId":"123476865",
@@ -745,6 +761,34 @@
 							"usermsg":"姐妹你买了嘛？真的那么好吗？",
 							"commentTime":"2018-09-01",
 							"productImg":["img/list/7a695b382e.jpg"]
+=======
+      "comment":[
+				{
+					"userId":"1234815",
+					"userHead":"img/TB1Ih7cj.T1gK0jSZFhXXaAtVXa-520-280.jpg_q90_.webp",
+					"username":"水上漂流记",
+					"usermsg":"不喜欢这一款，客服态度恶劣，我已经无言以对，差评",
+					"commentTime":"2018-08-31",
+					"productColor":"上衣+裤子",
+					"productSize":"M",
+					"productImg":"img/list/7a695b382e.jpg",
+					"addComment":[
+						{
+							"userId":"1234846",
+							"userHead":"img/TB1Ih7cj.T1gK0jSZFhXXaAtVXa-520-280.jpg_q90_.webp",
+							"username":"店主",
+							"usermsg":"您好，实在抱歉，我们这边会做出补偿的，请您追评加星哦！",
+							"commentTime":"2018-09-01",
+							"productImg":"img/list/7a695b382e.jpg"
+						},
+            {
+							"userId":"1233246",
+							"userHead":"img/TB1Ih7cj.T1gK0jSZFhXXaAtVXa-520-280.jpg_q90_.webp",
+							"username":"姐妹花",
+							"usermsg":"姐妹，这家店真就这么差吗？本来我打算买来着，看到你这里我没动力了",
+							"commentTime":"2018-09-01",
+							"productImg":"img/list/7a695b382e.jpg"
+>>>>>>> f9d2bb031cc3e739b86d004d905603e630abaec6
 						}
 					]
 				}

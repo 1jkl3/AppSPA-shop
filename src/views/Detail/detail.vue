@@ -9,7 +9,6 @@
 			<detail-info :productInfo="getSection" />
 			<detail-shop :shopInfo="getShop" />
 			<detail-img :detailImage="getDetailImage"/>
-			
 		</common-scroll>
 	</div>
 </template>
