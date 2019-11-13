@@ -10,7 +10,7 @@
 		<div class="info-img">
 			<p>{{getKey}}</p>
 			<div class="img-info" v-for="item in getList" :key="item">
-				<img style="width: 100%;" :src="require('@/assets/'+item)" />
+				<img style="width: 100%;" @load="detailimg" :src="require('@/assets/'+item)" />
 			</div>
 		</div>
 		<div class="info-message">
@@ -29,6 +29,11 @@
 <script>
 	export default {
 		name:'DetailImg',
+		data(){
+			return{
+				isimg:false
+			}
+		},
 		props:{
 			detailImage:{
 				type:Object,
@@ -49,6 +54,14 @@
 			getList(){
 				if(typeof this.detailImage !== "undefined"){
 					return this.detailImage.listImg
+				}
+			}
+		},
+		methods:{
+			detailimg(){
+				if(!this.isimg){
+					this.$emit("detail-image")
+					this.isimg=true
 				}
 			}
 		}

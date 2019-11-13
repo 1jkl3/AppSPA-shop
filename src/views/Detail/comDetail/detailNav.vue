@@ -11,7 +11,7 @@
 					<div class="detail-nav-item" 
 					v-for="(item,index) in titles"
 					:key='item'
-					:class="{detailActive:index ==currenindex}"
+					:class="{detailActive:index == currenindex}"
 					@click="detailActiveUp(index)">
 						{{item}}
 					</div>
@@ -29,10 +29,15 @@
 		components:{
 			HeadNav
 		},
+		props:{
+			currenindex:{
+				type:Number,
+				default:0
+			}
+		},
 		data(){
 			return {
-				titles:['商品','参数','评论','推荐'],
-				currenindex:0
+				titles:['商品','参数','评论','推荐']
 			}
 		},
 		methods:{
@@ -40,7 +45,9 @@
 				this.$router.back()
 			},
 			detailActiveUp(index){
-				this.currenindex = index
+				this.$nextTick(function(){
+					this.$emit("detail-coll",index)
+				})
 			}
 		}
 	}
