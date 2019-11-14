@@ -19,9 +19,6 @@
 					return []
 				}
 			}
-		},
-		created(){
-			// console.log(this.info[0].img)
 		}
 	}
 </script>

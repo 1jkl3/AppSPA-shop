@@ -1,27 +1,65 @@
 <template>
-	<div class="detail" v-if="flag">
-		<detail-nav @detail-coll="tabColl" :currenindex="currenindex" ref="detailNav"/>
+	<div class="detail" >
+		<detail-nav @detail-coll="tabColl" :currenindex="currenindex" />
 		<common-scroll class="detail-scroll" ref="detail"
 		@scroll="scroll"
 		:listenScroll="true"
 		:pulldown="pulldown"
-		:data="productData[0]">
-			<detail-swiper :productSwiper="getSwiper" @detail-isswiper="swiperloading"/>
+		:data="getproductdata">
+			<detail-swiper :productSwiper="getSwiper" />
 			<detail-info :productInfo="getSection" />
 			<detail-shop :shopInfo="getShop" />
 			<detail-img :detailImage="getDetailImage" @detail-image="imgloading"/>	
 			<detail-params :shopParameter="getShopParameter" ref="detailParmas"/>
+			<detail-comment :commentInfo="getCommentInfo" ref="detailComment"/>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
 		</common-scroll>
 	</div>
 </template>
 
 <script>
-	import detailNav from './comDetail/detailNav'
+	import DetailNav from './comDetail/DetailNav'
 	import DetailSwiper from './comDetail/DetailSwiper'
 	import DetailInfo from './comDetail/DetailInfo'
 	import DetailShop from './comDetail/DetailShop'
 	import DetailImg from './comDetail/DetailImg'
 	import DetailParams from './comDetail/DetailParams'
+	import DetailComment from './comDetail/DetailComment'
 	
 	import CommonScroll from '@/components/common/CommonScroll'
 	import {
@@ -31,25 +69,32 @@
 		name:'detail',
 		data(){
 			return {
-				flag:false,
 				productData:[],
 				productDetail:{},
 				pulldown: true,
-				currenindex:0
+				currenindex:0,
+				paramsHeight:0,
+				commentHeight:0
 			}
 		},
 		components:{
-			detailNav,
+			DetailNav,
 			DetailSwiper,
 			DetailInfo,
 			DetailShop,
 			CommonScroll,
 			DetailImg,
-			DetailParams
+			DetailParams,
+			DetailComment
 		},
 		computed:{
 			getId(){
 				return this.$route.query.id
+			},
+			getproductdata(){
+				if(typeof this.productData[0] !== "undefined"){
+					return this.productData[0]
+				}
 			},
 			getSwiper(){
 				if(typeof this.productData[0] !== "undefined"){
@@ -75,49 +120,61 @@
 				if(typeof this.productData[0] !== "undefined"){
 					return this.productData[0].shopParameter
 				}
+			},
+			getCommentInfo(){
+				if(typeof this.productData[0] !== "undefined"){
+					// if(this.productData[0].comment !== null){
+						return this.productData[0].comment
+					// }else{
+						// return null
+					// }
+				}
 			}
 		},
 		methods:{
-			swiperloading(){
-				let top = this.$refs.detailParmas.$el.offsetTop
-				console.log(top)
-			},
 			imgloading(){
-				let top = this.$refs.detailParmas.$el.offsetTop
-				console.log(top)
+				this.$refs.detail.refresh()
+				let paramsTop = this.$refs.detailParmas.$el.offsetTop
+				let commentTop = this.$refs.detailComment.$el.offsetTop
+				this.paramsHeight=paramsTop
+				this.commentHeight=commentTop
 			},
 			tabColl(index){
 				// console.log(index)
-				let top = this.$refs.detailParmas.$el.offsetTop-229
-				console.log(top)
-					switch (index){
-						case 0:
-						this.$refs.detail.scrollTo(0,0,500)
-						this.currenindex=index
-							break;
-						case 1:
-						this.$refs.detail.scrollTo(0,-top,500)
-						this.currenindex=index
-							break;
-						case 2:
-						this.currenindex=index
-							break;
-						case 3:
-						this.currenindex=index
-							break;
-						default:
-							break;
-					}
+				switch (index){
+					case 0:
+					this.currenindex=index
+					this.$refs.detail.scrollTo(0,0,500)
+						break;
+					case 1:
+					this.currenindex=index
+					this.$refs.detail.scrollTo(0,-this.paramsHeight,400)
+						break;
+					case 2:
+					this.currenindex=index
+					this.$refs.detail.scrollTo(0,-this.commentHeight,500)
+						break;
+					case 3:
+					this.currenindex=index
+					this.$refs.detail.scrollTo(0,-this.commentHeight-100,500)
+						break;
+					default:
+						break;
+				}	
 			},
 			scroll(pos){
-				let top = this.$refs.detailParmas.$el.offsetTop-229
-				// console.log(pos.y)
-				// console.log(top)
-				if(pos.y == 0){
-					// this.tabColl(0)
+				// console.log(-pos.y)
+				if(-pos.y < this.paramsHeight){
 					this.currenindex=0
-				}else if(pos.y == -top){
+				}
+				if(this.paramsHeight <= -pos.y){
 					this.currenindex=1
+				}
+				if(this.commentHeight <= -pos.y){
+					this.currenindex=2
+				}
+				if(this.commentHeight+100 <=-pos.y){
+					this.currenindex=3
 				}
 			},
 			getProductItem(){
@@ -132,15 +189,9 @@
 			}
 		},
 		created(){
-			console.log(window.innerHeight)
 			this.$nextTick(function(){
 				this.getProductItem()
-				this.flag=true
 			})
-		},
-		updated(){
-			
-			// console.log(window.innerHeight)
 		}
 	}
 </script>
@@ -150,6 +201,8 @@
 		height: 100vh;
 		overflow: hidden;
 		position: relative;
+		z-index: 9;
+		background-color: #FFFFFF;
 	}
 	.detail-scroll {
 		position: absolute;

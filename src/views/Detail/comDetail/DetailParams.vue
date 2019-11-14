@@ -68,8 +68,7 @@
 			<div class="clothes-name"><span>潮流</span></div>
 			<div class="clothes-item">{{gettide}}</div>
 		</div>
-		<div class="clothes-footer">
-		</div>
+		<div class="clothes-footer"></div>
 	</div>
 </template>
 
@@ -152,8 +151,7 @@
 				if(typeof this.shopParameter !== "undefined"){
 					return this.shopParameter.tide
 				}
-			},
-			
+			}
 		}
 	}
 </script>

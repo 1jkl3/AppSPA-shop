@@ -2,7 +2,7 @@
 	<div class="detail-swiper">
 		<swiper :options="detailSwiperOption">
 			<swiper-slide v-for='(item,index) in productSwiper' :key="index">
-				<img class="swiper-detail-img" @load="detailswiper" :src="require('@/assets/'+item)" />
+				<img class="swiper-detail-img" :src="require('@/assets/'+item)" />
 			</swiper-slide>
 			<template #pagination><div class="swiper-pagination"></div></template>
 		</swiper>
@@ -37,15 +37,6 @@
 					loop:true,
 					speed: 1500,
 					lazyLoading :true
-				},
-				isSwiper:false
-			}
-		},
-		methods:{
-			detailswiper(){
-				if(!this.isSwiper){
-					this.$emit("detail-isswiper")
-					this.isSwiper=true
 				}
 			}
 		}

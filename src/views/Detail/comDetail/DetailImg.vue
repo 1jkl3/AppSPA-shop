@@ -31,7 +31,7 @@
 		name:'DetailImg',
 		data(){
 			return{
-				isimg:false
+				imgLenght:0
 			}
 		},
 		props:{
@@ -59,9 +59,8 @@
 		},
 		methods:{
 			detailimg(){
-				if(!this.isimg){
+				if(++this.imgLenght === this.getList.length){
 					this.$emit("detail-image")
-					this.isimg=true
 				}
 			}
 		}

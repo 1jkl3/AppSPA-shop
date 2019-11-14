@@ -9,10 +9,10 @@
 		:pulldown="pulldown"
 		ref="scroll">
 			<home-swiper @imgload="swiperimgload"/>
-			<belle-info :info="person" />
-			<recom-mend :rec="recom" v-if="flag" />
+			<belle-info :info="person"/>
+			<recom-mend :rec="recom"/>
 			<tab-coll :titles='titlespan' @click-tab='getgoodslist' ref="tabcoll"/>
-			<goods-list :goodslistdata="goodlist[currentype]" v-if="flag" />
+			<goods-list :goodslistdata="goodlist[currentype]"/>
 		</common-scroll>
 		<back-top @gotoUp='gotoup' :scrollY="scrollY"></back-top>
 	</div>
@@ -47,7 +47,6 @@
 			return {
 				person: [],
 				recom: [],
-				flag: false,
 				titlespan: ['流行', '新款', '精选'],
 				currentype: 'pop',
 				goodlist: {
@@ -162,12 +161,11 @@
 		 */
 		created() {
 			//初始化
-			this.$nextTick(function() {
+			this.$nextTick(function(){
 				this.getgoodslist()
 				this.getlist()
 				this.getrecom()
-				this.flag = true
-			})
+			})	
 		}
 	}
 </script>

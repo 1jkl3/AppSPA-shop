@@ -39,9 +39,6 @@
 			afterfirst() {
 				return this.rec.filter((item, index) => index >= this.rec.length / 2)
 			}
-		},
-		beforeUpdate() {
-			// console.log(this.beforefirst)
 		}
 	}
 </script>
