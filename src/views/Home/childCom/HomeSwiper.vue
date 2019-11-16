@@ -1,10 +1,9 @@
 <template>
 	<div class="swiper-active">
 		<swiper :options="swiperOption">
-		    <swiper-slide><img src="@/assets/img/TB1Ih7cj.T1gK0jSZFhXXaAtVXa-520-280.jpg_q90_.webp" @load="imgload"></swiper-slide>
-		    <swiper-slide><img src="@/assets/img/TB1tVbMia67gK0jSZFHSuu9jVXa.jpg" @load="imgload"></swiper-slide>
-		    <swiper-slide><img src="@/assets/img/TB1VESgj7L0gK0jSZFxSutWHVXa.jpg" @load="imgload"></swiper-slide>
-		    <swiper-slide><img src="@/assets/img/TB1562Aj7P2gK0jSZPxXXacQpXa-520-280.jpg_q90_.webp" @load="imgload"></swiper-slide>
+		    <swiper-slide v-for="item in Swiper" :key="item">
+				<img :src="require('@/assets/'+item)"/>
+			</swiper-slide>
 			<template #pagination><div class="swiper-pagination"></div></template>
 		</swiper>
 	</div>
@@ -15,6 +14,14 @@
 	import { swiper, swiperSlide } from 'vue-awesome-swiper'
 	export default{
 		name:'HomeSwiper',
+		props:{
+			Swiper:{
+				type:Array,
+				default:()=>{
+					return []
+				}
+			}
+		},
 		components:{
 			swiper,
 			swiperSlide
@@ -32,15 +39,6 @@
 					loop:true,
 					speed: 1500,
 					lazyLoading :true
-				},
-				istab:false
-			}
-		},
-		methods:{
-			imgload(){
-				if(!this.istab){
-					this.$emit("imgload")
-					this.istab=true
 				}
 			}
 		}

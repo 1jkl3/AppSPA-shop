@@ -1,6 +1,6 @@
 <template>
-	<div class="detail-info">
-		<div class="section-title"><strong>{{getTitle}}</strong></div>
+	<div class="detail-info" v-if="Object.keys(productInfo).length !== 0">
+		<div class="section-title"><strong>{{productInfo.title}}</strong></div>
 		<div class="section-price">
 			<span class="oldprice-span">{{getOldPrice}}</span>
 			<s class="newprice-span">{{getNewPrice}}</s>
@@ -8,7 +8,7 @@
 			<div class="sell-data">
 				<div class="sell-left">{{getSales}}</div>
 				<div class="sell-center">{{getCollect}}</div>
-				<div class="sell-right">{{getDeliveryTime}}</div>
+				<div class="sell-right">{{productInfo.deliveryTime}}</div>
 			</div>
 		</div>
 		<div class="section-footer">
@@ -30,11 +30,6 @@
 			}
 		},
 		computed:{
-			getTitle(){
-				if(typeof this.productInfo !== "undefined"){
-					return this.productInfo.title;
-				}
-			},
 			getOldPrice(){
 				if(typeof this.productInfo !== "undefined"){
 					return "￥"+this.productInfo.oldprice;
@@ -53,11 +48,6 @@
 			getCollect(){
 				if(typeof this.productInfo !== "undefined"){
 					return "收藏"+this.productInfo.collect+"人";
-				}
-			},
-			getDeliveryTime(){
-				if(typeof this.productInfo !== "undefined"){
-					return this.productInfo.deliveryTime;
 				}
 			}
 		}

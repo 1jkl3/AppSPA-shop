@@ -1,7 +1,7 @@
 <template>
-	<div class="goods-list-item" @click="goodClick">
+	<div class="goods-list-item" v-if="Object.keys(listdata).length !== 0" @click="goodClick">
 		<div class="goods-item-img">
-			<img :src="require('@/assets/'+this.listdata.img)" />
+			<img :src="require('@/assets/'+listdata.img)" @load="imgload"/>
 		</div>
 		<div class="goods-item-txt">
 			<p>{{listdata.title}}</p>
@@ -21,6 +21,15 @@
 			}
 		},
 		methods:{
+			imgload(){
+				// console.log(this.$route.path.indexOf('/home') !== -1)
+				if(this.$route.path.indexOf('/home') !== -1){
+					this.$bus.$emit("HomeImgLoad")
+				}else if(this.$route.path.indexOf('/detail') !== -1){
+					this.$bus.$emit("DetailImgLoad")
+				}
+				// this.$bus.$emit("HomeimgLoad")
+			},
 			goodClick(){
 				this.$router.push({
 					path:'/detail',

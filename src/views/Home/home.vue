@@ -8,8 +8,8 @@
 		:data="goodlist"
 		:pulldown="pulldown"
 		ref="scroll">
-			<home-swiper @imgload="swiperimgload"/>
-			<belle-info :info="person"/>
+			<home-swiper :Swiper="swiper"/>
+			<belle-info :info="person" @info-src="infoSrc"/>
 			<recom-mend :rec="recom"/>
 			<tab-coll :titles='titlespan' @click-tab='getgoodslist' ref="tabcoll"/>
 			<goods-list :goodslistdata="goodlist[currentype]"/>
@@ -21,9 +21,6 @@
 <script>
 	import NavItem from './childCom/NavItem.vue'
 	import HomeSwiper from './childCom/HomeSwiper'
-	import {
-		request
-	} from '@/network/request'
 	import belleInfo from './childCom/belleInfo'
 	import recomMend from './childCom/recomMend'
 	import tabColl from '@/components/content/tabColl'
@@ -31,6 +28,8 @@
 	import CommonScroll from '@/components/common/CommonScroll'
 	import BackTop from '@/components/common/BackTop'
 	
+	import {throttle} from '@/common/util/throttle.js'
+	import {getImg,getGoods,getLists,getRecom} from '@/network/HomeRequest.js'
 	export default {
 		name: 'home',
 		components: {
@@ -45,6 +44,7 @@
 		},
 		data() {
 			return {
+				swiper:[],
 				person: [],
 				recom: [],
 				titlespan: ['流行', '新款', '精选'],
@@ -62,7 +62,7 @@
 					isTop:false
 				},
 				tabloadoffsetTop:0,
-				istabFixed:false
+				istabFixed:false,
 			}
 		},
 		methods: {
@@ -78,6 +78,10 @@
 				}
 				this.istabFixed=(-poc.y)>this.tabloadoffsetTop
 			},
+			//确定tabcoll的位置
+			infoSrc(){
+				// this.tabloadoffsetTop=this.$refs.tabcoll.$el.offsetTop
+			},
 			/**
 			 * 回到顶部
 			 */
@@ -91,20 +95,15 @@
 				switch (index) {
 					case 0:
 						this.currentype = 'pop'
-							request({
-								url: `/api/${this.currentype}`
-							}).then(res => {
-								this.goodlist[this.currentype] = res.data
-								// console.log(res.data)
-							}).catch(e => {
-								console.log(e)
-							})
+						getGoods(this.currentype).then(res => {
+							this.goodlist[this.currentype] = res.data
+						}).catch(e =>{
+							console.log(e)
+						})
 						break;
 					case 1:
 						this.currentype = 'news'
-							request({
-								url: `/api/${this.currentype}`
-							}).then(res => {
+						getGoods(this.currentype).then(res => {
 								this.goodlist[this.currentype] = res.data
 							}).catch(e => {
 								console.log(e)
@@ -112,9 +111,7 @@
 						break;
 					case 2:
 						this.currentype = 'sell'
-							request({
-								url: `/api/${this.currentype}`
-							}).then(res => {
+						getGoods(this.currentype).then(res => {
 								this.goodlist[this.currentype] = res.data
 							}).catch(e => {
 								console.log(e)
@@ -123,37 +120,39 @@
 					default:
 						break;
 				}
-				this.$nextTick(function(){
-					this.$refs.tabcoll1.currenactive=index
-					this.$refs.tabcoll.currenactive=index
-				})
+				this.$refs.tabcoll1.currenactive=index
+				this.$refs.tabcoll.currenactive=index	
 			},
 			/**
 			 * 初始请求
 			 */
+			getSwiper:function(){
+				getImg().then(res =>{
+					this.swiper.push(...res.data)
+				}).catch(e=>{
+					console.log(e)
+				})
+			},
 			getlist: function() {
-				request({
-					url: '/api/list'
-				}).then(res => {
+				getLists().then(res => {
 					this.person.push(...res.data)
 				}).catch(e => {
 					console.log(e)
 				})
 			},
 			getrecom: function() {
-				request({
-					url: '/api/recom'
-				}).then(res => {
+				getRecom().then(res => {
 					this.recom.push(...res.data)
 				}).catch(e => {
 					console.log(e)
 				})
 			},
-			/**
-			 * tabcoll动态位置
-			 */
-			swiperimgload(){
-				this.tabloadoffsetTop=this.$refs.tabcoll.$el.offsetTop+90
+			toThrottle:function(){
+				console.log('h')
+				this.$bus.$on("HomeImgLoad",()=>{
+					throttle(this.$refs.scroll.refresh(),100)
+					this.tabloadoffsetTop=this.$refs.tabcoll.$el.offsetTop
+				})
 			}
 		},
 		/**
@@ -161,11 +160,18 @@
 		 */
 		created() {
 			//初始化
-			this.$nextTick(function(){
-				this.getgoodslist()
+			setTimeout(()=>{
+				this.getgoodslist(0)
+				this.getSwiper()
 				this.getlist()
 				this.getrecom()
-			})	
+			},20)
+		},
+		mounted(){
+			this.toThrottle()
+		},
+		deactivated(){
+			this.$bus.$off("HomeImgLoad")
 		}
 	}
 </script>

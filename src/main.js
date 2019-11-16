@@ -11,6 +11,9 @@ import 'normalize.css'
 import './assets/css/style.css'
 Vue.use(VueAwesomeSwiper)
 Vue.config.productionTip = false
+//事件总线
+Vue.prototype.$bus = new Vue()
+
 const originalPush = Router.prototype.push
 Router.prototype.push = function push(location) {
   return originalPush.call(this, location).catch(err => err)

@@ -12,7 +12,6 @@
 		<div class="recommend-item">
 			<div class="rec-item" v-for="(item,index) in afterfirst" :key='index'>
 				<div class="rec-item-img">
-					<!-- <img :src="item.img" /> -->
 					<img src="@/assets/img/list/7a695b382e.jpg" />
 				</div>
 				<div class="rec-item-text">{{item.text}}</div>
@@ -51,8 +50,7 @@
 	.recommend-item {
 		display: flex;
 		height: 60px;
-		/* margin-bottom: 10px; */
-		padding-bottom: 20px;
+		margin-bottom: 20px;
 	}
 
 	.recommend span {
@@ -61,10 +59,9 @@
 
 	.rec-item {
 		flex: 1;
-		height: 100%;
 	}
 
-	.rec-item img {
+	.rec-item-img img {
 		width: 100%;
 		height: 100%;
 		border-radius: 50%;
@@ -74,11 +71,12 @@
 		margin: 0 auto;
 		background: red;
 		width: 50%;
-		height: 80%;
+		height: 70%;
 		border-radius: 50%;
 	}
 	
 	.rec-item-text{
-		height: 20%;
+		height: 30%;
+		clear: none;
 	}
 </style>

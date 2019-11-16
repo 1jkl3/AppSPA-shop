@@ -1,5 +1,5 @@
 <template>
-	<div class="goods-list">
+	<div class="goods-list" v-if="Object.keys(goodslistdata).length !== 0">
 		<goods-list-item v-for="(item,index) in goodslistdata" :key='index' :listdata="item"></goods-list-item>
 	</div>
 </template>
@@ -13,9 +13,11 @@
 		},
 		props:{
 			goodslistdata:{
-					type:Array,
-					default:null
+				type:Array,
+				default:()=>{
+					return []
 				}
+			}
 		}
 	}
 </script>

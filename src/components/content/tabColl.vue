@@ -29,11 +29,6 @@
 				this.currenactive = index
 				this.$emit("click-tab",this.currenactive)
 			}
-		},
-		created(){
-			this.$nextTick(function(){
-				this.tabclik(this.currenactive)
-			})
 		}
 	}
 </script>

@@ -1,16 +1,16 @@
 <template>
-	<div class="detail-img">
+	<div class="detail-img" v-if="Object.keys(detailImage).length !== 0">
 		<div class="info-start">
 			<div class="start"></div>
 			<div class="info-content">
-				<span>{{getAnchor}}</span>
+				<span>{{detailImage.anchor}}</span>
 			</div>
 			<div class="end"></div>
 		</div>
 		<div class="info-img">
-			<p>{{getKey}}</p>
-			<div class="img-info" v-for="item in getList" :key="item">
-				<img style="width: 100%;" @load="detailimg" :src="require('@/assets/'+item)" />
+			<p>{{detailImage.key}}</p>
+			<div class="img-info" v-for="item in detailImage.listImg" :key="item">
+				<img style="width: 100%;" :src="require('@/assets/'+item)" />
 			</div>
 		</div>
 		<div class="info-message">
@@ -29,39 +29,10 @@
 <script>
 	export default {
 		name:'DetailImg',
-		data(){
-			return{
-				imgLenght:0
-			}
-		},
 		props:{
 			detailImage:{
 				type:Object,
 				default:()=>{}
-			}
-		},
-		computed:{
-			getAnchor(){
-				if(typeof this.detailImage !== "undefined"){
-					return this.detailImage.anchor
-				}
-			},
-			getKey(){
-				if(typeof this.detailImage !== "undefined"){
-					return this.detailImage.key
-				}
-			},
-			getList(){
-				if(typeof this.detailImage !== "undefined"){
-					return this.detailImage.listImg
-				}
-			}
-		},
-		methods:{
-			detailimg(){
-				if(++this.imgLenght === this.getList.length){
-					this.$emit("detail-image")
-				}
 			}
 		}
 	}

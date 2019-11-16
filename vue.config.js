@@ -7,12 +7,14 @@ var appData2 = require('./src/assets/json/goods/pop.json')
 var appData3 = require('./src/assets/json/goods/news.json')
 var appData4 = require('./src/assets/json/goods/sell.json')
 var appData5 = require('./src/assets/json/details/product.json')
+var appData6 = require('./src/assets/json/swiper.json')
 var list = appData.person
 var recom = appData1.person
 var pop = appData2.pop
 var news = appData3.news
 var sell = appData4.sell
 var product = appData5.details
+var swiper = appData6.swiper
 var apiRouter = express.Router()
 app.use('/api',apiRouter)
 function resolve (dir) {
@@ -32,6 +34,9 @@ module.exports = {
 	  port: 8060,
 	  proxy: null, // 设置代理
 	  before: app => {
+		  app.get('/api/swiper',function(req,res){
+		  	  res.json({code:0,data:swiper})
+		  });
 		  app.get('/api/list',function(req,res){
 			  res.json({code:0,data:list})
 		  });

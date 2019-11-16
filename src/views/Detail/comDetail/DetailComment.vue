@@ -4,7 +4,7 @@
 			<div class="user-comment">用户评价</div>
 			<div class="comment-more">更多</div>
 		</div>
-		<div class="comment-info" v-for="(item,index) in getComment" :key="index">
+		<div class="comment-info" v-for="(item,index) in commentInfo" :key="index">
 			<div class="info-user">
 				<div class="info-comment-img">
 					<img class="comment-src" :src="require('@/assets/'+item.userHead)" /> 
@@ -31,18 +31,6 @@
 			commentInfo:{
 				type:Array,
 				default:null
-			}
-		},
-		data(){
-			return {
-				list:["1","2","3","4","5"]
-			}
-		},
-		computed:{
-			getComment(){
-				if(this.commentInfo != null){
-					return this.commentInfo
-				}
 			}
 		},
 		methods:{
