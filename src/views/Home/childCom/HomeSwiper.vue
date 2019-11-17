@@ -2,7 +2,7 @@
 	<div class="swiper-active">
 		<swiper :options="swiperOption">
 		    <swiper-slide v-for="item in Swiper" :key="item">
-				<img :src="require('@/assets/'+item)"/>
+				<img :src="require('@/assets/'+item)" @load="imgLoad"/>
 			</swiper-slide>
 			<template #pagination><div class="swiper-pagination"></div></template>
 		</swiper>
@@ -37,9 +37,13 @@
 						disableOnInteraction:false,
 					},
 					loop:true,
-					speed: 1500,
-					lazyLoading :true
+					speed: 1500
 				}
+			}
+		},
+		methods:{
+			imgLoad(){
+				this.$bus.$emit("ImgLoad")
 			}
 		}
 	}

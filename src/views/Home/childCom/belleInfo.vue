@@ -2,7 +2,7 @@
 	<div class="belle-info">
 		<div class="info-item" v-for="(item,index) in info" :key='index'>
 			<div class="rec-item-img">
-				<img :src="require('@/assets/'+item.img)" /> 
+				<img :src="require('@/assets/'+item.img)" @load="imgLoad"/> 
 			</div>
 			<div class="rec-item-text">{{item.text}}</div>
 		</div>
@@ -18,6 +18,11 @@
 				default: function() {
 					return []
 				}
+			}
+		},
+		methods:{
+			imgLoad(){
+				this.$bus.$emit("ImgLoad")
 			}
 		}
 	}

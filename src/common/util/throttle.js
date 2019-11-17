@@ -33,7 +33,7 @@
  * @param type 1 防抖，2 节流
  */
 
-const throttle = function(func, wait, type) {
+const throttle = function(func, wait=500, type=1) {
 	let timer;
 	if (type == 1) {
 		return function() {

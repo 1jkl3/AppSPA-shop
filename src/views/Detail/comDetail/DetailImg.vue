@@ -10,7 +10,7 @@
 		<div class="info-img">
 			<p>{{detailImage.key}}</p>
 			<div class="img-info" v-for="item in detailImage.listImg" :key="item">
-				<img style="width: 100%;" :src="require('@/assets/'+item)" />
+				<img style="width: 100%;" :src="require('@/assets/'+item)" @load="ImgLoad"/>
 			</div>
 		</div>
 		<div class="info-message">
@@ -33,6 +33,11 @@
 			detailImage:{
 				type:Object,
 				default:()=>{}
+			}
+		},
+		methods:{
+			ImgLoad(){
+				this.$bus.$emit("ImgLoad")
 			}
 		}
 	}

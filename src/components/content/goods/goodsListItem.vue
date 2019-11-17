@@ -23,11 +23,7 @@
 		methods:{
 			imgload(){
 				// console.log(this.$route.path.indexOf('/home') !== -1)
-				if(this.$route.path.indexOf('/home') !== -1){
-					this.$bus.$emit("HomeImgLoad")
-				}else if(this.$route.path.indexOf('/detail') !== -1){
-					this.$bus.$emit("DetailImgLoad")
-				}
+				this.$bus.$emit("ImgLoad")
 				// this.$bus.$emit("HomeimgLoad")
 			},
 			goodClick(){

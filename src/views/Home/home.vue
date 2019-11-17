@@ -9,7 +9,7 @@
 		:pulldown="pulldown"
 		ref="scroll">
 			<home-swiper :Swiper="swiper"/>
-			<belle-info :info="person" @info-src="infoSrc"/>
+			<belle-info :info="person"/>
 			<recom-mend :rec="recom"/>
 			<tab-coll :titles='titlespan' @click-tab='getgoodslist' ref="tabcoll"/>
 			<goods-list :goodslistdata="goodlist[currentype]"/>
@@ -27,9 +27,9 @@
 	import goodsList from '@/components/content/goods/goodsList'
 	import CommonScroll from '@/components/common/CommonScroll'
 	import BackTop from '@/components/common/BackTop'
-	
 	import {throttle} from '@/common/util/throttle.js'
 	import {getImg,getGoods,getLists,getRecom} from '@/network/HomeRequest.js'
+	import {imgLoadMIXIN} from '@/components/common/mixin.js'
 	export default {
 		name: 'home',
 		components: {
@@ -63,8 +63,10 @@
 				},
 				tabloadoffsetTop:0,
 				istabFixed:false,
+				imgListener:null
 			}
 		},
+		mixins:[imgLoadMIXIN],
 		methods: {
 			/**
 			 * 显示回到顶部按钮
@@ -77,10 +79,6 @@
 					this.scrollY.isTop=false
 				}
 				this.istabFixed=(-poc.y)>this.tabloadoffsetTop
-			},
-			//确定tabcoll的位置
-			infoSrc(){
-				// this.tabloadoffsetTop=this.$refs.tabcoll.$el.offsetTop
 			},
 			/**
 			 * 回到顶部
@@ -121,7 +119,8 @@
 						break;
 				}
 				this.$refs.tabcoll1.currenactive=index
-				this.$refs.tabcoll.currenactive=index	
+				this.$refs.tabcoll.currenactive=index
+				this.$refs.scroll.refresh()
 			},
 			/**
 			 * 初始请求
@@ -146,13 +145,6 @@
 				}).catch(e => {
 					console.log(e)
 				})
-			},
-			toThrottle:function(){
-				console.log('h')
-				this.$bus.$on("HomeImgLoad",()=>{
-					throttle(this.$refs.scroll.refresh(),100)
-					this.tabloadoffsetTop=this.$refs.tabcoll.$el.offsetTop
-				})
 			}
 		},
 		/**
@@ -168,10 +160,10 @@
 			},20)
 		},
 		mounted(){
-			this.toThrottle()
+			// this.toThrottle()
 		},
 		deactivated(){
-			this.$bus.$off("HomeImgLoad")
+			this.$bus.$off("ImgLoad",this.imgListener)
 		}
 	}
 </script>

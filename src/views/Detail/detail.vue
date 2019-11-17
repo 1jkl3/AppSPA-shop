@@ -1,7 +1,7 @@
 <template>
 	<div class="detail" v-if="productData.length > 0">
 		<detail-nav @detail-coll="tabColl" :currenindex="currenindex" />
-		<common-scroll class="detail-scroll" ref="detail"
+		<common-scroll class="detail-scroll" ref="scroll"
 		@scroll="scroll"
 		:listenScroll="true"
 		:pulldown="pulldown"
@@ -27,7 +27,7 @@
 	import DetailComment from './comDetail/DetailComment'
 	import DetailNomInate from './comDetail/DetailNomInate'
 	import CommonScroll from '@/components/common/CommonScroll'
-	
+	import {imgLoadMIXIN} from '@/components/common/mixin.js'
 	import {throttle} from '@/common/util/throttle.js'
 	import {
 		getDetailInfo,
@@ -44,8 +44,10 @@
 				commentHeight:0,
 				nomInateHeight:0,
 				nomInate:[],
+				imgListener:null
 			}
 		},
+		mixins:[imgLoadMIXIN],
 		components:{
 			DetailNav,
 			DetailSwiper,
@@ -63,33 +65,25 @@
 			}
 		},
 		methods:{
-			imgloading(){
-				console.log("d")
-				this.$bus.$on("DetailImgLoad",()=>{
-					throttle(this.$refs.detail.refresh(),100)
-					this.paramsHeight=this.$refs.detailParmas.$el.offsetTop
-					this.commentHeight=this.$refs.detailComment.$el.offsetTop
-					this.nomInateHeight=this.$refs.detailNomInate.$el.offsetTop
-				})
-			},
+			
 			tabColl(index){
 				// console.log(index)
 				switch (index){
 					case 0:
 					this.currenindex=index
-					this.$refs.detail.scrollTo(0,0,500)
+					this.$refs.scroll.scrollTo(0,0,500)
 						break;
 					case 1:
 					this.currenindex=index
-					this.$refs.detail.scrollTo(0,-this.paramsHeight,400)
+					this.$refs.scroll.scrollTo(0,-this.paramsHeight,400)
 						break;
 					case 2:
 					this.currenindex=index
-					this.$refs.detail.scrollTo(0,-this.commentHeight,500)
+					this.$refs.scroll.scrollTo(0,-this.commentHeight,500)
 						break;
 					case 3:
 					this.currenindex=index
-					this.$refs.detail.scrollTo(0,-this.nomInateHeight,500)
+					this.$refs.scroll.scrollTo(0,-this.nomInateHeight,500)
 						break;
 					default:
 						break;
@@ -133,10 +127,10 @@
 			},20)
 		},
 		mounted(){
-			this.imgloading()
+			// this.imgloading()
 		},
 		destroyed(){
-			this.$bus.$off("DetailImgLoad")
+			this.$bus.$off("ImgLoad",this.imgListener)
 		}
 	}
 </script>
