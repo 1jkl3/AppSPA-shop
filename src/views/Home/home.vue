@@ -1,9 +1,9 @@
 <template>
-	<div id="home">
+	<div id="home" v-cloak>
 		<nav-item />
 		<tab-coll :titles='titlespan' @click-tab='getgoodslist' ref="tabcoll1" v-show="istabFixed" class="tab-item"/>
 		<common-scroll class="comscroll"
-		@scroll="sctop"
+		@scroll="scroll"
 		:listenScroll="true"
 		:data="goodlist"
 		:pulldown="pulldown"
@@ -14,7 +14,7 @@
 			<tab-coll :titles='titlespan' @click-tab='getgoodslist' ref="tabcoll"/>
 			<goods-list :goodslistdata="goodlist[currentype]"/>
 		</common-scroll>
-		<back-top @gotoUp='gotoup' :scrollY="scrollY"></back-top>
+		<back-top @gotoUp='gotoup' :isTop="isTop" />
 	</div>
 </template>
 
@@ -26,10 +26,8 @@
 	import tabColl from '@/components/content/tabColl'
 	import goodsList from '@/components/content/goods/goodsList'
 	import CommonScroll from '@/components/common/CommonScroll'
-	import BackTop from '@/components/common/BackTop'
-	import {throttle} from '@/common/util/throttle.js'
 	import {getImg,getGoods,getLists,getRecom} from '@/network/HomeRequest.js'
-	import {imgLoadMIXIN} from '@/components/common/mixin.js'
+	import {imgLoadMIXIN,BackTopMIXIN} from '@/components/common/mixin.js'
 	export default {
 		name: 'home',
 		components: {
@@ -39,8 +37,7 @@
 			recomMend,
 			tabColl,
 			goodsList,
-			CommonScroll,
-			BackTop
+			CommonScroll
 		},
 		data() {
 			return {
@@ -55,36 +52,23 @@
 					"sell": []
 				},
 				pulldown: true,
-				scrollY:{
-					x:0,
-					y:0,
-					time:500,
-					isTop:false
-				},
 				tabloadoffsetTop:0,
 				istabFixed:false,
-				imgListener:null
 			}
 		},
-		mixins:[imgLoadMIXIN],
+		mixins:[imgLoadMIXIN,BackTopMIXIN],
 		methods: {
 			/**
 			 * 显示回到顶部按钮
 			 * @param {Object} poc
 			 */
-			sctop(poc){
+			scroll(poc){
 				if(poc.y<=-1450){
-					this.scrollY.isTop=true
+					this.isTop=true
 				}else{
-					this.scrollY.isTop=false
+					this.isTop=false
 				}
 				this.istabFixed=(-poc.y)>this.tabloadoffsetTop
-			},
-			/**
-			 * 回到顶部
-			 */
-			gotoup(scrllTop){
-				this.$refs.scroll.scrollTo(scrllTop.x,scrllTop.y,scrllTop.time)
 			},
 			/**
 			 * 按钮请求

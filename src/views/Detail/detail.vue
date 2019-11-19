@@ -1,5 +1,5 @@
 <template>
-	<div class="detail" v-if="productData.length > 0">
+	<div class="detail" v-if="productData.length > 0" v-cloak>
 		<detail-nav @detail-coll="tabColl" :currenindex="currenindex" />
 		<common-scroll class="detail-scroll" ref="scroll"
 		@scroll="scroll"
@@ -14,6 +14,8 @@
 			<detail-comment :commentInfo="productData[0].comment" ref="detailComment"/>
 			<detail-nom-inate :nomInate="nomInate" ref="detailNomInate" />
 		</common-scroll>
+		<detail-bottom-bar @cartTo="proTocart"/>
+		<back-top @gotoUp='gotoup' :isTop="isTop" />
 	</div>
 </template>
 
@@ -26,9 +28,9 @@
 	import DetailParams from './comDetail/DetailParams'
 	import DetailComment from './comDetail/DetailComment'
 	import DetailNomInate from './comDetail/DetailNomInate'
+	import DetailBottomBar from './comDetail/DetailBottomBar'
 	import CommonScroll from '@/components/common/CommonScroll'
-	import {imgLoadMIXIN} from '@/components/common/mixin.js'
-	import {throttle} from '@/common/util/throttle.js'
+	import {imgLoadMIXIN,BackTopMIXIN} from '@/components/common/mixin.js'
 	import {
 		getDetailInfo,
 		getNominateInfo
@@ -43,11 +45,10 @@
 				paramsHeight:0,
 				commentHeight:0,
 				nomInateHeight:0,
-				nomInate:[],
-				imgListener:null
+				nomInate:[]
 			}
 		},
-		mixins:[imgLoadMIXIN],
+		mixins:[imgLoadMIXIN,BackTopMIXIN],
 		components:{
 			DetailNav,
 			DetailSwiper,
@@ -57,7 +58,8 @@
 			DetailImg,
 			DetailParams,
 			DetailComment,
-			DetailNomInate
+			DetailNomInate,
+			DetailBottomBar
 		},
 		computed:{
 			getId(){
@@ -65,7 +67,16 @@
 			}
 		},
 		methods:{
-			
+			proTocart(){
+				const product={}
+				product.img=this.productData[0].swiper[0]
+				product.title=this.productData[0].productInfo.title
+				product.price=this.productData[0].productInfo.newprice
+				product.count=1
+				product.id=this.getId
+				// console.log(product)
+				this.$store.commit("addCart",product)
+			},
 			tabColl(index){
 				// console.log(index)
 				switch (index){
@@ -91,6 +102,11 @@
 			},
 			scroll(pos){
 				// console.log(-pos.y)
+				if(pos.y<=-1450){
+					this.isTop=true
+				}else{
+					this.isTop=false
+				}
 				if(-pos.y < this.paramsHeight){
 					this.currenindex=0
 				}
@@ -121,6 +137,7 @@
 			}
 		},
 		created(){
+			// alert("a")
 			setTimeout(()=>{
 				this.getProductItem()
 				this.getNominate()
@@ -136,11 +153,14 @@
 </script>
 
 <style>
+	[v-cloak]{
+		display: none;
+	}
 	.detail{
+		z-index: 9;
 		height: 100vh;
 		overflow: hidden;
 		position: relative;
-		z-index: 9;
 		background-color: #FFFFFF;
 	}
 	.detail-scroll {

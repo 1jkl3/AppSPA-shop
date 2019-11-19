@@ -27,6 +27,10 @@
 				// this.$bus.$emit("HomeimgLoad")
 			},
 			goodClick(){
+				
+				if(this.$route.path.indexOf('/detail') !== -1){
+					location.reload()
+				}
 				this.$router.push({
 					path:'/detail',
 					query:{

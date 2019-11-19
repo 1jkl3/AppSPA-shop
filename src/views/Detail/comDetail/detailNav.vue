@@ -42,7 +42,7 @@
 		},
 		methods:{
 			backUp(){
-				this.$router.back()
+				this.$router.push("/home")
 			},
 			detailActiveUp(index){
 				this.$nextTick(function(){

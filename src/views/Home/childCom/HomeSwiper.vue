@@ -52,9 +52,9 @@
 <style>
 	.swiper-active{
 		height: 200px;
-		/* border-bottom: 10px solid #eee; */
 	}
 	.swiper-active img{
-		height:200px
+		height:200px;
+		width: 100%;
 	}
 </style>

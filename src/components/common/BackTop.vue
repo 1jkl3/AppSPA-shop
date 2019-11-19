@@ -1,5 +1,5 @@
 <template>
-	<div class="back-top" v-show="scrollY.isTop" @click="gotoup">
+	<div class="back-top" v-show="isTop" @click="gotoup">
 		<i class="iconfont">&#xe654;</i>
 	</div>
 </template>
@@ -7,28 +7,19 @@
 <script>
 	export default {
 		name:'BackTop',
-		props:{
-			scrollY:{
-				type:Object,
-				default:()=>{}
+		data(){
+			return {
+				scrollY:0
 			}
 		},
-		data(){
-			return{
-				scroll:{
-					x:0,
-					y:0,
-					time:500,
-					isTop:false
-				}
-			}
+		props:{
+			isTop:Boolean,
+			default:false
 		},
 		methods:{
 			gotoup(){
 				this.$emit("gotoUp",this.scrollY)
 			}
-		},
-		mounted(){
 		}
 	}
 </script>
@@ -46,6 +37,5 @@
 	.back-top .iconfont{
 		font-size: 60px;
 		text-align: center;
-		color: red;
 	}
 </style>
