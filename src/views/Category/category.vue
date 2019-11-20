@@ -1,12 +1,16 @@
 <template>
-	<div></div>
+	<div class="cate-gory">
+	</div>
 </template>
 
 <script>
 	export default {
-		name:'category'
+		name:'category',
 	}
 </script>
 
 <style>
+	.cate-gory{
+		
+	}
 </style>

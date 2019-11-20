@@ -15,9 +15,6 @@
 <script>
 	export default {
 		name:'DetailBottomBar',
-		props:{
-			
-		},
 		data(){
 			return {
 				controlClass:false

@@ -6,6 +6,7 @@
 		:listenScroll="true"
 		:pulldown="pulldown"
 		:data="productData[0]">
+		<!-- <div>{{$store.getters.get_cart}}</div> -->
 			<detail-swiper :productSwiper="productData[0].swiper" />
 			<detail-info :productInfo="productData[0].productInfo" />
 			<detail-shop :shopInfo="productData[0].shopInfo" />
@@ -72,10 +73,10 @@
 				product.img=this.productData[0].swiper[0]
 				product.title=this.productData[0].productInfo.title
 				product.price=this.productData[0].productInfo.newprice
+				product.shopName=this.productData[0].shopInfo.shopName
 				product.count=1
 				product.id=this.getId
-				// console.log(product)
-				this.$store.commit("addCart",product)
+				this.$store.dispatch("handleCart",product)
 			},
 			tabColl(index){
 				// console.log(index)

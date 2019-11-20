@@ -27,7 +27,5 @@
 		position: fixed;
 		top: 0;
 		background-color: white;
-		box-shadow: 0px 2px 0.2px #9DA0A4;
-		z-index: 99;
 	}
 </style>

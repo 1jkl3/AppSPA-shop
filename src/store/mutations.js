@@ -1,11 +1,9 @@
+import {ADD_CART,ADD_COUNT} from './store_type.js'
 export default {
-	addCart(state,payload){
-		let product = state.shopCart.find(item =>item.id == payload.id )
-		if(product){
-			console.log("吡大赛")
-			product.count+=1
-		}else{
-			state.shopCart.push(payload)
-		}
+	[ADD_CART](state,payload){
+		state.shopCart.push(payload)
+	},
+	[ADD_COUNT](state,payload){
+		payload.count++
 	}
 }

@@ -18,12 +18,13 @@ export default {
 		height: 44px;
 		line-height: 44px;
 		text-align: center;
+		box-shadow: 0px 1px 2px #9DA0A4;
 	}
 	.nav-center{
 		flex: 1;
 	}
 	.nav-left,.nav-right{
 		width: 13%;
-		background-color: yellow;
+		/* background-color: yellow; */
 	}
 </style>
