@@ -1,29 +1,29 @@
 <template>
-	<div class="cart-item" v-if="get_cart_length > 0">
+	<div class="cart-item">
 		<div class="cart-info">
 			<div class="cart-checked-top">
 				<div class="cart-input-top">
 					<input type="radio" :checked="isCheckedTop" @click="alterCheckedTop"/>
 				</div>
 				<div class="cart-shopname">
-					<span>&nbsp;&nbsp;&nbsp;{{get_cart[0].shopName}}</span>
+					<span>&nbsp;&nbsp;&nbsp;{{listItem.shopName}}</span>
 				</div>
 			</div>
-			<div class="cart-checked-bottom" :class="{cartBackground:isCheckedBom}">
+			<div class="cart-checked-bottom" :class="{cartBackground:listItem.checked}">
 				<div class="cart-input-bottom">
-					<input type="radio" :checked="isCheckedBom" @click="alterCheckedBom"/>
+					<check-button :isChecked="listItem.checked" @CheckedBom="alterCheckedBom"/>
 				</div>
 				<div class="cart-msg">
 					<div class="cart-img">
-						<img :src="require('@/assets/'+get_cart[0].img)" />
+						<img :src="require('@/assets/'+listItem.img)" />
 					</div>
 					<div class="cart-surplus-info">
-						<div>{{get_cart[0].title}}</div>
+						<div>{{listItem.title}}</div>
 						<div class="cart-count">
-							<div>￥{{get_cart[0].price}}</div>
+							<div>￥{{listItem.price}}</div>
 							<div>
 								<button>-</button>
-								<span>{{get_cart[0].count}}</span>
+								<span>{{listItem.count}}</span>
 								<button>+</button>
 							</div>
 						</div>
@@ -35,40 +35,50 @@
 </template>
 
 <script>
-	import {mapGetters} from 'vuex'
+	import CheckButton from '@/components/content/CheckButton'
 	export default {
-		name:'cartItem',
+		name:'CartItem',
+		props:{
+			listItem:{
+				type:Object,
+				default:()=>{}
+			}
+		},
 		data(){
 			return {
-				isCheckedTop:false,
-				isCheckedBom:false
+				isCheckedTop:false
 			}
+		},
+		components:{
+			CheckButton
+		},
+		created(){
+			this.isCheckedTop = this.listItem.checked
 		},
 		methods:{
 			alterCheckedTop(){
 				this.isCheckedTop = !this.isCheckedTop
 				if(this.isCheckedTop){
-					this.isCheckedBom = true
+					this.listItem.checked = true
 				}else{
-					this.isCheckedBom = false
+					this.listItem.checked = false
 				}
 			},
 			alterCheckedBom(){
-				this.isCheckedBom = !this.isCheckedBom
-				if(this.isCheckedBom){
+				this.listItem.checked = !this.listItem.checked
+				if(this.listItem.checked){
 					this.isCheckedTop = true
+				}else{
+					this.isCheckedTop = false
 				}
 			}
-		},
-		computed:{
-			...mapGetters(['get_cart','get_cart_length'])
 		}
 	}
 </script>
 
 <style>
 	.cart-item{
-		transform: translateY(10px);
+		padding: 5px 0px;
 	}
 	.cart-info{
 		background: white;
@@ -88,12 +98,12 @@
 	}
 	.cart-input-top{
 		width: 10%;
+		text-align: center;
 	}
 	.cart-shopname{
 		flex: 1;
 	}
-	.cart-input-top input,.cart-input-bottom input{
-		margin-left: 10px;
+	.cart-input-top input{
 		transform: scale(1.5,1.5);
 	}
 	.cart-checked-bottom{
@@ -101,7 +111,7 @@
 		display: flex;
 	}
 	.cartBackground{
-		background: #9DA0A4;
+		background:#f5f5f5;
 	}
 	.cart-input-bottom{
 		width: 10%;

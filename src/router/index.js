@@ -32,9 +32,9 @@ const routes = [{
 		}
 	},
 	{ //购物车
-		path: '/shopcart',
-		name: 'shopcart',
-		component: () => import('../views/ShopCart/shopcart.vue'),
+		path: '/ShopCart',
+		name: 'ShopCart',
+		component: () => import('../views/ShopCart/ShopCart.vue'),
 		meta:{
 			title:'购物车'
 		}

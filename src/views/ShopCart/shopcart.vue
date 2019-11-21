@@ -1,56 +1,40 @@
 <template>
 	<div class="shop-cart">
 		<cart-nav />
-		<common-scroll class="shop-scroll" :listenScroll="true">
-			<cart-item></cart-item>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
-			<div>1</div>
+		<common-scroll class="shop-scroll" :listenScroll="true"  ref="shopScroll">
+			<cart-list />
 		</common-scroll>
+		<cart-collect />
 	</div>
 </template>
 
 <script>
-	import cartNav from './comShopCart/cartNav'
-	import cartItem from './comShopCart/cartItem'
+	import CartNav from './comShopCart/CartNav'
+	import CartList from './comShopCart/CartList'
+	import CartCollect from './comShopCart/CartCollect'
 	import CommonScroll from '@/components/common/CommonScroll'
 	export default {
-		name:'shopcart',
+		name:'ShopCart',
 		components:{
-			cartNav,
+			CartNav,
 			CommonScroll,
-			cartItem
+			CartList,
+			CartCollect
+		},
+		computed:{
+			getcart(){
+				let arr ={}
+				arr.cart=this.$store.getters.get_cart
+				return arr
+			}
+		},
+		activated(){
+			this.$refs.shopScroll.refresh()
+		},
+		watch:{
+			getcart:function(val){
+				this.$refs.shopScroll.refresh()
+			}
 		}
 	}
 </script>
@@ -60,8 +44,8 @@
 		height: 100vh;
 	}
 	.shop-scroll{
-		background: #9DA0A4;
-		height: calc(100% - 44px - 49px);
+		background: #f5fffa;
+		height: calc(100% - 44px - 49px - 40px);
 		overflow: hidden;
 	}
 </style>

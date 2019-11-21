@@ -12,7 +12,7 @@
 	import {mapGetters} from 'vuex'
 	import HeadNav from 'components/common/headnav/HeadNav'
 	export default {
-		name:'cartNav',
+		name:'CartNav',
 		components:{
 			HeadNav
 		},

@@ -46,7 +46,7 @@
 			 */
 			data: {
 				type: Object,
-				default: ()=>{}
+				default: null
 			},
 			/**
 			 * 是否派发滚动到底部的事件，用于上拉加载
