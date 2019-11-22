@@ -1,12 +1,14 @@
 <template>
 	<div class="cart-collect">
 		<div class="cart-collect-one">
-			<check-button :isChecked="ischecked" :islabel="islabel" @CheckedBom="alterCheckedBom"/>
+			<check-button :isChecked="isCheckedAll" :islabel="islabel" @CheckedBom="alterCheckedBom"/>
 		</div>
 		<div class="cart-collect-two">
-			<div><span>合计：￥{{}}</span></div>
+			<div><span>合计：￥{{count_Money}}</span></div>
 		</div>
-		<div class="cart-collect-there"></div>
+		<div class="cart-collect-there" @click="toShoping">
+			<span>合算</span>
+		</div>
 	</div>
 </template>
 
@@ -21,23 +23,43 @@
 		data(){
 			return {
 				islabel:true,
-				ischecked:false
+				isCheckedAtler:false
 			}
 		},
 		computed:{
-			...mapGetters(['get_cart','get_cart_length'])
+			...mapGetters(['get_cart','get_cart_length']),
+			isCheckedAll(){
+				if(this.get_cart_length === 0) return this.isCheckedAtler
+				return this.get_cart.every(item => item.checked)
+			},
+			count_Money(){
+				var num = 0;
+				this.get_cart.forEach(item => {
+					if(item.checked){
+						num+=item.price
+					}
+				})
+				return num;
+			}
 		},
 		methods:{
 			alterCheckedBom(){
-				this.ischecked = !this.ischecked
-				console.log(this.get_cart)
-				var num=0
-				if(this.ischecked){
-					this.get_cart.forEach(item =>{
-						num+=item.price
-					})
-					console.log(num)
+				if(this.get_cart_length === 0){
+					this.isCheckedAtler = !this.isCheckedAtler
+				}else{
+					if(this.isCheckedAll){
+						this.get_cart.map(item => {
+							item.checked = false
+						})
+					}else {
+						this.get_cart.map(item => {
+							item.checked = true
+						})
+					}
 				}
+			},
+			toShoping(){
+				
 			}
 		}
 	}
@@ -59,10 +81,17 @@
 	}
 	.cart-collect-two{
 		width: 60%;
-		/* background: black; */
 	}
 	.cart-collect-there{
 		flex: 1;
-		background: blue;
+		background: red;
+		color: white;
+	}
+	.cart-collect-there>span{
+		display: inline-block;
+		height: 40px;
+		width: 100%;
+		text-align: center;
+		line-height: 40px;
 	}
 </style>

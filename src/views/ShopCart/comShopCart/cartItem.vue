@@ -1,6 +1,6 @@
 <template>
 	<div class="cart-item">
-		<div class="cart-info">
+		<div class="cart-info" v-if="Object.keys(listItem).length !== 0">
 			<div class="cart-checked-top">
 				<div class="cart-input-top">
 					<input type="radio" :checked="isCheckedTop" @click="alterCheckedTop"/>
@@ -22,9 +22,9 @@
 						<div class="cart-count">
 							<div>￥{{listItem.price}}</div>
 							<div>
-								<button>-</button>
+								<button @click="lessenCount">-</button>
 								<span>{{listItem.count}}</span>
-								<button>+</button>
+								<button @click="addCount">+</button>
 							</div>
 						</div>
 					</div>
@@ -52,8 +52,15 @@
 		components:{
 			CheckButton
 		},
-		created(){
-			this.isCheckedTop = this.listItem.checked
+		watch:{
+			listItem:{
+				immediate:true,
+				deep:true,
+				handler(val,old){
+					this.isCheckedTop = val.checked
+					this.$store.commit("alter_checked",val)
+				}
+			}
 		},
 		methods:{
 			alterCheckedTop(){
@@ -71,6 +78,12 @@
 				}else{
 					this.isCheckedTop = false
 				}
+			},
+			lessenCount(){
+				this.listItem.count--
+			},
+			addCount(){
+				this.listItem.count++
 			}
 		}
 	}

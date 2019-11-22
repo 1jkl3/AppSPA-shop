@@ -76,7 +76,9 @@
 				product.shopName=this.productData[0].shopInfo.shopName
 				product.count=1
 				product.id=this.getId
-				this.$store.dispatch("handleCart",product)
+				this.$store.dispatch("handleCart",product).then(res=>{
+					console.log(res)
+				})
 			},
 			tabColl(index){
 				// console.log(index)
