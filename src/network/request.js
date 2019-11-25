@@ -14,6 +14,5 @@ export function request(config){
 	},err =>{
 		return err
 	})
-	
 	return instance(config)
 }

@@ -6,7 +6,6 @@
 		:listenScroll="true"
 		:pulldown="pulldown"
 		:data="productData[0]">
-		<!-- <div>{{$store.getters.get_cart}}</div> -->
 			<detail-swiper :productSwiper="productData[0].swiper" />
 			<detail-info :productInfo="productData[0].productInfo" />
 			<detail-shop :shopInfo="productData[0].shopInfo" />
@@ -77,7 +76,7 @@
 				product.count=1
 				product.id=this.getId
 				this.$store.dispatch("handleCart",product).then(res=>{
-					console.log(res)
+					this.$toast.show(res)
 				})
 			},
 			tabColl(index){
@@ -122,32 +121,31 @@
 				if(this.nomInateHeight <=-pos.y){
 					this.currenindex=3
 				}
-			},
-			getProductItem(){
-				getDetailInfo().then(res=>{
-					let data =res.data.filter(item => item.status == this.getId)
-					this.productData.push(...data)
-				}).catch(e=>{
-					console.log(e)
-				})
-			},
-			getNominate(){
-				getNominateInfo().then(res=>{
-					this.nomInate.push(...res.data)
-				}).catch(e=>{
-					console.log(e)
-				})
 			}
 		},
 		created(){
-			// alert("a")
-			setTimeout(()=>{
-				this.getProductItem()
-				this.getNominate()
-			},20)
+			getDetailInfo().then(res=>{
+				let data =res.data.filter(item => item.status == this.getId)
+				this.productData.push(...data)
+				this.$nextTick(()=>{
+					setTimeout(()=>{
+						this.paramsHeight=this.$refs.detailParmas.$el.offsetTop
+						this.commentHeight=this.$refs.detailComment.$el.offsetTop
+						this.nomInateHeight=this.$refs.detailNomInate.$el.offsetTop
+						console.log(this.paramsHeight)
+					},100)
+				})
+				
+			}).catch(e=>{
+				console.log(e)
+			})
+			getNominateInfo().then(res=>{
+				this.nomInate.push(...res.data)
+			}).catch(e=>{
+				console.log(e)
+			})
 		},
 		mounted(){
-			// this.imgloading()
 		},
 		destroyed(){
 			this.$bus.$off("ImgLoad",this.imgListener)
@@ -160,7 +158,7 @@
 		display: none;
 	}
 	.detail{
-		z-index: 9;
+		/* z-index: 9; */
 		height: 100vh;
 		overflow: hidden;
 		position: relative;

@@ -23,7 +23,4 @@
 </script>
 
 <style>
-	.cate-gory-nav{
-		
-	}
 </style>

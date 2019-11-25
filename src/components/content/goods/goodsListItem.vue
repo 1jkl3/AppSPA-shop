@@ -1,7 +1,7 @@
 <template>
 	<div class="goods-list-item" v-if="Object.keys(listdata).length !== 0" @click="goodClick">
 		<div class="goods-item-img">
-			<img :src="require('@/assets/'+listdata.img)" @load="imgload"/>
+			<img v-lazy="require('@/assets/'+listdata.img)" @load="imgload"/>
 		</div>
 		<div class="goods-item-txt">
 			<p>{{listdata.title}}</p>

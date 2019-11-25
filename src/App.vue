@@ -3,22 +3,13 @@
 	  <keep-alive exclude="detail">
 		<router-view/>
 	  </keep-alive>
-	<mult-tab v-if="isShow"/>
+	<mult-tab v-if="$route.name !== 'detail'" ref="tab"/>
   </div>
 </template>
 <script>
 	import MultTab from './components/content/MultTab'
 	export default {
 		name:'app',
-		computed:{
-			isShow(){
-				if(this.$route.path.indexOf("/detail") !== 0 ){
-					return true
-				}else{
-					return false
-				}
-			}
-		},
 		components:{
 			MultTab//tab组件
 		}

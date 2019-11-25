@@ -102,49 +102,40 @@
 					default:
 						break;
 				}
-				this.$refs.tabcoll1.currenactive=index
-				this.$refs.tabcoll.currenactive=index
-				this.$refs.scroll.refresh()
-			},
-			/**
-			 * 初始请求
-			 */
-			getSwiper:function(){
-				getImg().then(res =>{
-					this.swiper.push(...res.data)
-				}).catch(e=>{
-					console.log(e)
+				this.$nextTick(()=>{
+					this.$refs.tabcoll1.currenactive=index
+					this.$refs.tabcoll.currenactive=index
+					this.$refs.scroll.refresh()
 				})
 			},
-			getlist: function() {
-				getLists().then(res => {
-					this.person.push(...res.data)
-				}).catch(e => {
-					console.log(e)
-				})
-			},
-			getrecom: function() {
-				getRecom().then(res => {
-					this.recom.push(...res.data)
-				}).catch(e => {
-					console.log(e)
-				})
-			}
 		},
 		/**
 		 * 发送请求
 		 */
 		created() {
 			//初始化
-			setTimeout(()=>{
-				this.getgoodslist(0)
-				this.getSwiper()
-				this.getlist()
-				this.getrecom()
-			},20)
-		},
-		mounted(){
-			// this.toThrottle()
+			this.getgoodslist(0)
+			getImg().then(res =>{
+				this.swiper.push(...res.data)
+			}).catch(e=>{
+				console.log(e)
+			})
+			getLists().then(res => {
+				this.person.push(...res.data)
+			}).catch(e => {
+				console.log(e)
+			})
+			getRecom().then(res => {
+				this.recom.push(...res.data)
+			}).catch(e => {
+				console.log(e)
+			})
+			this.$nextTick(()=>{
+				setTimeout(()=>{
+					this.tabloadoffsetTop=this.$refs.tabcoll.$el.offsetTop
+					console.log(this.tabloadoffsetTop)
+				},100)
+			})
 		},
 		deactivated(){
 			this.$bus.$off("ImgLoad",this.imgListener)

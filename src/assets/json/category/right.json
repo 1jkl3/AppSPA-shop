@@ -1,0 +1,379 @@
+{
+	"rightInfo": [{
+			"name": "新品",
+			"data": [{
+					"img": "img/rigth/newProduct/1.jpg",
+					"text": "糯团"
+				},
+				{
+					"img": "img/rigth/newProduct/2.jpg",
+					"text": "手链"
+				},
+				{
+					"img": "img/rigth/newProduct/3.jpg",
+					"text": "宝石"
+				},
+				{
+					"img": "img/rigth/newProduct/4.jpg",
+					"text": "翡翠戒指"
+				},
+				{
+					"img": "img/rigth/newProduct/5.jpg",
+					"text": "假山"
+				}
+			]
+		},
+		{
+			"name": "上衣",
+			"data": [{
+					"img": "img/rigth/coat/1.jpg",
+					"text": "外套"
+				},
+				{
+					"img": "img/rigth/coat/2.jpg",
+					"text": "毛衣"
+				},
+				{
+					"img": "img/rigth/coat/3.jpg",
+					"text": "褐色毛衣"
+				},
+				{
+					"img": "img/rigth/coat/4.jpg",
+					"text": "休闲"
+				},
+				{
+					"img": "img/rigth/coat/5.jpg",
+					"text": "连衣服"
+				}
+			]
+		},
+		{
+			"name": "裤子",
+			"data": [{
+					"img": "img/rigth/pants/1.jpg",
+					"text": "休闲裤"
+				},
+				{
+					"img": "img/rigth/pants/2.jpg",
+					"text": "修身裤"
+				},
+				{
+					"img": "img/rigth/pants/3.jpg",
+					"text": "运动裤"
+				},
+				{
+					"img": "img/rigth/pants/4.jpg",
+					"text": "形男裤"
+				},
+				{
+					"img": "img/rigth/pants/5.jpg",
+					"text": "西装裤"
+				}
+			]
+		},
+		{
+			"name": "裙子",
+			"data": [{
+					"img": "img/rigth/skirt/1.webp",
+					"text": "休闲裙"
+				},
+				{
+					"img": "img/rigth/skirt/2.webp",
+					"text": "渣女裙"
+				},
+				{
+					"img": "img/rigth/skirt/3.webp",
+					"text": "优雅裙"
+				},
+				{
+					"img": "img/rigth/skirt/4.webp",
+					"text": "文静裙"
+				},
+				{
+					"img": "img/rigth/skirt/5.webp",
+					"text": "居家裙"
+				}
+			]
+		},
+		{
+			"name": "内衣",
+			"data": [{
+					"img": "img/rigth/underwear/1.webp",
+					"text": "性感内衣"
+				},
+				{
+					"img": "img/rigth/underwear/2.webp",
+					"text": "带色内衣"
+				},
+				{
+					"img": "img/rigth/underwear/3.webp",
+					"text": "内搭内衣"
+				},
+				{
+					"img": "img/rigth/underwear/4.webp",
+					"text": "热情内衣"
+				},
+				{
+					"img": "img/rigth/underwear/5.webp",
+					"text": "经典内衣"
+				}
+			]
+		},
+		{
+			"name": "女鞋",
+			"data": [{
+					"img": "img/rigth/garilshoes/1.webp",
+					"text": "炫酷板鞋"
+				},
+				{
+					"img": "img/rigth/garilshoes/2.webp",
+					"text": "牛人袜靴"
+				},
+				{
+					"img": "img/rigth/garilshoes/3.jpg",
+					"text": "可爱豆豆鞋"
+				},
+				{
+					"img": "img/rigth/garilshoes/4.webp",
+					"text": "带绒白鞋"
+				},
+				{
+					"img": "img/rigth/garilshoes/5.webp",
+					"text": "经典板鞋"
+				}
+			]
+		},
+		{
+			"name": "袜子",
+			"data": [{
+					"img": "img/rigth/stockings/1.webp",
+					"text": "可爱毛绒袜"
+				},
+				{
+					"img": "img/rigth/stockings/2.webp",
+					"text": "经典黑色袜"
+				},
+				{
+					"img": "img/rigth/stockings/3.webp",
+					"text": "怪色袜"
+				},
+				{
+					"img": "img/rigth/stockings/4.webp",
+					"text": "红底袜"
+				},
+				{
+					"img": "img/rigth/stockings/5.webp",
+					"text": "灰色迷人袜"
+				}
+			]
+		},
+		{
+			"name": "包包",
+			"data": [{
+					"img": "img/rigth/handbag/1.webp",
+					"text": "富婆包"
+				},
+				{
+					"img": "img/rigth/handbag/2.webp",
+					"text": "贵族包"
+				},
+				{
+					"img": "img/rigth/handbag/3.webp",
+					"text": "经典背包"
+				}
+			]
+		},
+		{
+			"name": "运动",
+			"data": [{
+					"img": "img/rigth/exercise/1.webp",
+					"text": "单轮染指机"
+				},
+				{
+					"img": "img/rigth/exercise/2.webp",
+					"text": "家用跑步机"
+				},
+				{
+					"img": "img/rigth/exercise/3.webp",
+					"text": "运动型男装"
+				}
+			]
+		},
+		{
+			"name": "配饰",
+			"data": [{
+					"img": "img/rigth/Acc/1.webp",
+					"text": "金属手环"
+				},
+				{
+					"img": "img/rigth/Acc/2.webp",
+					"text": "楠木手串"
+				},
+				{
+					"img": "img/rigth/Acc/3.webp",
+					"text": "专业项链"
+				},
+				{
+					"img": "img/rigth/Acc/4.webp",
+					"text": "宝石发卡"
+				},
+				{
+					"img": "img/rigth/Acc/5.webp",
+					"text": "琥珀项链"
+				}
+			]
+		},
+		{
+			"name": "美妆",
+			"data": [{
+					"img": "img/rigth/beatuymakeup/1.webp",
+					"text": "化妆笔"
+				},
+				{
+					"img": "img/rigth/beatuymakeup/2.webp",
+					"text": "化妆面"
+				},
+				{
+					"img": "img/rigth/beatuymakeup/3.webp",
+					"text": "化妆棒"
+				}
+			]
+		},
+		{
+			"name": "个护",
+			"data": [{
+					"img": "img/rigth/Aguard/1.webp",
+					"text": "宝宝奶头"
+				},
+				{
+					"img": "img/rigth/Aguard/2.webp",
+					"text": "大小奶头"
+				},
+				{
+					"img": "img/rigth/Aguard/3.webp",
+					"text": "护儿奶头"
+				},
+				{
+					"img": "img/rigth/Aguard/4.webp",
+					"text": "普通奶头"
+				},
+				{
+					"img": "img/rigth/Aguard/5.webp",
+					"text": "儿爱奶头"
+				}
+			]
+		},
+		{
+			"name": "家具",
+			"data": [{
+					"img": "img/rigth/furnitrue/1.webp",
+					"text": "黑色沙发"
+				},
+				{
+					"img": "img/rigth/furnitrue/2.webp",
+					"text": "大床"
+				},
+				{
+					"img": "img/rigth/furnitrue/3.webp",
+					"text": "灰色沙发"
+				},
+				{
+					"img": "img/rigth/furnitrue/4.webp",
+					"text": "大白床"
+				},
+				{
+					"img": "img/rigth/furnitrue/5.webp",
+					"text": "经典茶几"
+				}
+			]
+		},
+		{
+			"name": "电器",
+			"data": [{
+					"img": "img/rigth/Eleapplicate/1.webp",
+					"text": "榨汁机"
+				},
+				{
+					"img": "img/rigth/Eleapplicate/2.webp",
+					"text": "油烟机"
+				},
+				{
+					"img": "img/rigth/Eleapplicate/3.webp",
+					"text": "大油烟机"
+				},
+				{
+					"img": "img/rigth/Eleapplicate/4.webp",
+					"text": "小油烟机"
+				},
+				{
+					"img": "img/rigth/Eleapplicate/5.webp",
+					"text": "白色油烟机"
+				}
+			]
+		},
+		{
+			"name": "男友",
+			"data": [{
+					"img": "img/rigth/boyfriend/1.webp",
+					"text": "耳机"
+				},
+				{
+					"img": "img/rigth/boyfriend/2.webp",
+					"text": "可爱首饰"
+				},
+				{
+					"img": "img/rigth/boyfriend/3.webp",
+					"text": "茶杯"
+				}
+			]
+		},
+		{
+			"name": "箱包",
+			"data": [{
+					"img": "img/rigth/bagSu/1.webp",
+					"text": "多款箱"
+				},
+				{
+					"img": "img/rigth/bagSu/2.webp",
+					"text": "黑色箱"
+				},
+				{
+					"img": "img/rigth/bagSu/3.webp",
+					"text": "黄色箱"
+				},
+				{
+					"img": "img/rigth/bagSu/4.webp",
+					"text": "黑色包包"
+				},
+				{
+					"img": "img/rigth/bagSu/5.webp",
+					"text": "多彩箱"
+				}
+			]
+		},
+		{
+			"name": "汽车",
+			"data": [{
+					"img": "img/rigth/automoblie/1.webp",
+					"text": "新能源Pro"
+				},
+				{
+					"img": "img/rigth/automoblie/2.webp",
+					"text": "海马汽车"
+				},
+				{
+					"img": "img/rigth/automoblie/3.webp",
+					"text": "baby玩具车"
+				},
+				{
+					"img": "img/rigth/automoblie/4.webp",
+					"text": "汉腾汽车"
+				},
+				{
+					"img": "img/rigth/automoblie/5.webp",
+					"text": "BYD新能源"
+				}
+			]
+		}
+	]
+}

@@ -2,7 +2,7 @@
 	<div class="detail-swiper">
 		<swiper :options="detailSwiperOption">
 			<swiper-slide v-for='(item,index) in productSwiper' :key="index">
-				<img class="swiper-detail-img" :src="require('@/assets/'+item)" @load="ImgLoad"/>
+				<img class="swiper-detail-img" v-lazy="require('@/assets/'+item)" @load="ImgLoad"/>
 			</swiper-slide>
 			<template #pagination><div class="swiper-pagination"></div></template>
 		</swiper>
