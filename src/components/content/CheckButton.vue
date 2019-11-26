@@ -13,6 +13,10 @@
 				type:Boolean,
 				default:false
 			},
+			shop_Id:{
+				type:Number,
+				default:0
+			},
 			islabel:{
 				type:Boolean,
 				default:false
@@ -20,7 +24,10 @@
 		},
 		methods:{
 			alterCheckedBom(){
-				this.$emit("CheckedBom")
+				let obj = {}
+				obj.checked = this.isChecked
+				obj.id = this.shop_Id
+				this.$emit("CheckedBom",obj)
 			}
 		}
 	}

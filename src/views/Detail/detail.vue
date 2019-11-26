@@ -75,6 +75,7 @@
 				product.shopName=this.productData[0].shopInfo.shopName
 				product.count=1
 				product.id=this.getId
+				product.checked=true
 				this.$store.dispatch("handleCart",product).then(res=>{
 					this.$toast.show(res)
 				})

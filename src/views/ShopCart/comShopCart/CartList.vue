@@ -20,7 +20,4 @@
 </script>
 
 <style>
-	.cart-list{
-		/* transform: translateY(10px); */
-	}
 </style>

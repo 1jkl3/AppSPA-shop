@@ -1,31 +1,32 @@
 <template>
 	<div class="cart-item">
 		<div class="cart-info" v-if="Object.keys(listItem).length !== 0">
-			<div class="cart-checked-top">
-				<div class="cart-input-top">
-					<input type="radio" :checked="isCheckedTop" @click="alterCheckedTop"/>
+			<div class="cart-shopname">
+				<div class="cart-check">
+					<input type="radio" :checked="isSelectAll" @click="alterCheckedTop" />
 				</div>
-				<div class="cart-shopname">
-					<span>&nbsp;&nbsp;&nbsp;{{listItem.shopName}}</span>
+				<div class="cart-text">
+					<span>{{listItem[0].shopName}}</span>
 				</div>
+				<div class="to-shop"><i class="iconfont">&#xe74b;</i></div>
 			</div>
-			<div class="cart-checked-bottom" :class="{cartBackground:listItem.checked}">
-				<div class="cart-input-bottom">
-					<check-button :isChecked="listItem.checked" @CheckedBom="alterCheckedBom"/>
+			<div class="cart-shops" v-for="(item,index) in listItem" :key="index">
+				<div class="shops-check">
+					<check-button :isChecked="item.checked" :shop_Id="item.id" @CheckedBom="alterCheckedBom" />
 				</div>
-				<div class="cart-msg">
-					<div class="cart-img">
-						<img :src="require('@/assets/'+listItem.img)" />
+				<div class="shops-img">
+					<img :src="require('@/assets/'+item.img)" />
+				</div>
+				<div class="shops-info">
+					<div class="shop-item-title">
+						<span>{{item.title}}</span>
 					</div>
-					<div class="cart-surplus-info">
-						<div>{{listItem.title}}</div>
-						<div class="cart-count">
-							<div>￥{{listItem.price}}</div>
-							<div>
-								<button @click="lessenCount">-</button>
-								<span>{{listItem.count}}</span>
-								<button @click="addCount">+</button>
-							</div>
+					<div class="shop-item-price">
+						<div class="item-price">￥{{item.price}}元</div>
+						<div class="item-commodity">
+							<button @click="lessenCount(item.id)">-</button>
+							<span>{{item.count}}</span>
+							<button @click="addCount(item.id)">+</button>
 						</div>
 					</div>
 				</div>
@@ -40,50 +41,65 @@
 		name:'CartItem',
 		props:{
 			listItem:{
-				type:Object,
-				default:()=>{}
+				type:Array,
+				default:null
 			}
 		},
 		data(){
 			return {
-				isCheckedTop:false
+				isCheckedTop:true
+			}
+		},
+		computed:{
+			isSelectAll(){
+				let isSelect = false
+				isSelect = this.listItem.every(item => item.checked);
+				return isSelect;
 			}
 		},
 		components:{
 			CheckButton
 		},
-		watch:{
-			listItem:{
-				immediate:true,
-				deep:true,
-				handler(val,old){
-					this.isCheckedTop = val.checked
-					this.$store.commit("alter_checked",val)
-				}
-			}
-		},
 		methods:{
+			//店铺选择
 			alterCheckedTop(){
-				this.isCheckedTop = !this.isCheckedTop
-				if(this.isCheckedTop){
-					this.listItem.checked = true
+				if(this.isSelectAll){
+					this.listItem.map(item=>{
+						item.checked = false
+						this.$store.commit("check_shop",item)
+					})
 				}else{
-					this.listItem.checked = false
+					this.listItem.map(item=>{
+						item.checked = true
+						this.$store.commit("check_shop",item)
+					})
 				}
 			},
-			alterCheckedBom(){
-				this.listItem.checked = !this.listItem.checked
-				if(this.listItem.checked){
-					this.isCheckedTop = true
-				}else{
-					this.isCheckedTop = false
-				}
+			//商品选择
+			alterCheckedBom(obj){
+				obj.checked = !obj.checked
+				this.$store.commit("check_item",obj)
+				// this.listItem.forEach(item=>{
+				// 	if(item.id == obj.id){
+				// 		this.$store.commit("check_item",item)
+				// 	}
+				// })
 			},
-			lessenCount(){
-				this.listItem.count--
+			lessenCount(id){
+				this.listItem.map(item=>{
+					if(item.id == id){
+						item.count--
+						this.$store.commit("alter_checked",item)
+					}
+				})
 			},
-			addCount(){
-				this.listItem.count++
+			addCount(id){
+				this.listItem.map(item=>{
+					if(item.id == id){
+						item.count++
+						this.$store.commit("alter_checked",item)
+					}
+				})
 			}
 		}
 	}
@@ -92,79 +108,85 @@
 <style>
 	.cart-item{
 		padding: 5px 0px;
+		box-sizing: border-box;
 	}
 	.cart-info{
 		background: white;
 		display: flex;
 		flex-flow: column;
 		margin: 0 auto;
-		height: 120px;
 		width: 90%;
-		border-radius: 5px;
-		margin-bottom: 5px;
-	}
-	.cart-checked-top{
-		display: flex;
-		height: 35px;
-		width: 100%;
-		line-height: 35px;
-	}
-	.cart-input-top{
-		width: 10%;
-		text-align: center;
 	}
 	.cart-shopname{
-		flex: 1;
+		display: flex;
+		height: 40px;
+		line-height: 40px;
+		background: red;
+		border-bottom: 2px solid white;
 	}
-	.cart-input-top input{
+	.cart-check{
+		width: 10%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.cart-check input{
 		transform: scale(1.5,1.5);
 	}
-	.cart-checked-bottom{
-		height: 85px;
+	.cart-text{
+		flex: 1;
+	}
+	.to-shop{
+		width: 30px;
+	}
+	.cart-shops{
+		background: white;
+		border-radius: 5px;
 		display: flex;
+		height: 100px;
+		border-bottom: 2px solid red;
 	}
-	.cartBackground{
-		background:#f5f5f5;
-	}
-	.cart-input-bottom{
+	.shops-check{
 		width: 10%;
-		line-height: 85px;
-	}
-	.cart-msg{
-		flex: 1;
-		display: flex;
-		align-items: center;
-		justify-content: space-around;
-	}
-	.cart-img{
-		width: 30%;
-		height: 90%;
-	}
-	.cart-img img{
-		width: 100%;
-		height: 90%;
-	}
-	.cart-surplus-info{
-		height: 90%;
-		width: 65%;
-		display: flex;
-		flex-flow: column;
-	}
-	.cart-surplus-info div{
-		flex: 1;
-	}
-	.cart-count{
-		display: flex;
-	}
-	.cart-count div{
-		flex: 1;
 		height: 100%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 	}
-	.cart-count div span{
-		display: inline-block;
-		margin: 0 auto;
+	.shops-img{
+		width: 30%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.shops-img img{
+		width: 80%;
+		height: 80%;
+		border-radius: 20px;
+	}
+	.shops-info{
+		width: 60%;
+		display: flex;
+		flex-flow: column;
+	}
+	.shop-item-title{
+		flex: 1;
+		word-break:normal; 
+		word-wrap : break-word ;
+	}
+	.shop-item-price{
+		height: 30px;
+		background: #0000FF;
+		display: flex;
+		align-items: center;
+	}
+	.item-price{
+		flex: 1;
+		text-align: center;
+	}
+	.item-commodity{
+		flex: 1;
+		display: flex;
+		justify-content: space-around;
 	}
 </style>

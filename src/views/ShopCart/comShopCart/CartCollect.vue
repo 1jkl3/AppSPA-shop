@@ -29,15 +29,21 @@
 		computed:{
 			...mapGetters(['get_cart','get_cart_length']),
 			isCheckedAll(){
+				let ischeck = false
 				if(this.get_cart_length === 0) return this.isCheckedAtler
-				return this.get_cart.every(item => item.checked)
+				this.get_cart.forEach(item=>{
+					ischeck = item.every(item1 => item1.checked)
+				})
+				return ischeck
 			},
 			count_Money(){
 				var num = 0;
 				this.get_cart.forEach(item => {
-					if(item.checked){
-						num+=item.price
-					}
+					item.forEach(item2=>{
+						if(item2.checked){
+							num+=item2.price
+						}
+					})
 				})
 				return num;
 			}
@@ -48,13 +54,19 @@
 					this.isCheckedAtler = !this.isCheckedAtler
 				}else{
 					if(this.isCheckedAll){
-						this.get_cart.map(item => {
-							item.checked = false
+						this.get_cart.forEach(item=>{
+							item.map(item1 => {
+								item1.checked = false
+							})
 						})
+						this.$store.commit("check_all",false)
 					}else {
-						this.get_cart.map(item => {
-							item.checked = true
+						this.get_cart.forEach(item=>{
+							item.map(item1 => {
+								item1.checked = true
+							})
 						})
+						this.$store.commit("check_all",true)
 					}
 				}
 			},

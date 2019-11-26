@@ -27,6 +27,13 @@
       "unicode_decimal": 58913
     },
     {
+      "icon_id": "683404",
+      "name": "积分",
+      "font_class": "jifen",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
       "icon_id": "689261",
       "name": "类目 品类 分类 类别.2",
       "font_class": "leimupinleifenleileibie2",
@@ -39,6 +46,13 @@
       "font_class": "dianpu",
       "unicode": "e655",
       "unicode_decimal": 58965
+    },
+    {
+      "icon_id": "982336",
+      "name": "会员",
+      "font_class": "huiyuan",
+      "unicode": "e656",
+      "unicode_decimal": 58966
     },
     {
       "icon_id": "1048852",
@@ -118,6 +132,13 @@
       "unicode_decimal": 58894
     },
     {
+      "icon_id": "3755548",
+      "name": "信封",
+      "font_class": "icon-test",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
       "icon_id": "3845225",
       "name": "回答",
       "font_class": "huida",
@@ -160,6 +181,13 @@
       "unicode_decimal": 58887
     },
     {
+      "icon_id": "6275370",
+      "name": "包包",
+      "font_class": "icon-test1",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    },
+    {
       "icon_id": "6630956",
       "name": "上箭头",
       "font_class": "shangjiantou",
@@ -179,6 +207,13 @@
       "font_class": "zhifeiji",
       "unicode": "e602",
       "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "8288872",
+      "name": "手机",
+      "font_class": "shouji",
+      "unicode": "e853",
+      "unicode_decimal": 59475
     },
     {
       "icon_id": "8540983",
@@ -221,6 +256,13 @@
       "font_class": "liebiao",
       "unicode": "e618",
       "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "10809885",
+      "name": "向右 箭头",
+      "font_class": "changyongtubiao-xianxingdaochu-zhuanqu-",
+      "unicode": "e74b",
+      "unicode_decimal": 59211
     },
     {
       "icon_id": "10919362",
