@@ -133,7 +133,6 @@
 						this.paramsHeight=this.$refs.detailParmas.$el.offsetTop
 						this.commentHeight=this.$refs.detailComment.$el.offsetTop
 						this.nomInateHeight=this.$refs.detailNomInate.$el.offsetTop
-						console.log(this.paramsHeight)
 					},100)
 				})
 				

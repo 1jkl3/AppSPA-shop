@@ -25,7 +25,7 @@
 <script>
 	import HeadNav from 'components/common/headnav/HeadNav'
 	export default {
-		name:'comDetail',
+		name:'DetailNav',
 		components:{
 			HeadNav
 		},

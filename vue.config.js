@@ -34,8 +34,8 @@ module.exports = {
             .set('components',resolve('src/components'))
     },
 	devServer: {
-	  host: '192.168.137.1',
-	  port: 8060,
+	  // host: '192.168.137.1',
+	  // port: 8060,
 	  proxy: null, // 设置代理
 	  before: app => {
 		  app.get('/api/swiper',function(req,res){

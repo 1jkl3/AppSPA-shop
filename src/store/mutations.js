@@ -6,7 +6,7 @@ export default {
 	},
   //添加商品
   [ADD_COMMODITY](state,payload){
-    state.shopCart[payload.code].unshift(payload.date)
+     state.shopCart[payload.code].unshift(payload.date)
   },
   //添加商品数量
 	[ADD_COUNT](state,payload){
@@ -44,20 +44,19 @@ export default {
 	},
   //操作增删商品数量
 	[ALTER_CHECKED](state,payload){
-		let index = 0;
-		let index2 = 0;
-		if(payload.count <= 0){
-			state.shopCart.forEach((item1,index1)=>{
-				index2 = index1
-				index = item1.findIndex(item => payload.id == item.id)
-			})
-			state.shopCart[index2].splice(index,1)
-		}else{
-			state.shopCart.forEach((item,index1)=>{
-				index2 = index1
-				index = item.findIndex(item => payload.id == item.id)
-			})
-			state.shopCart[index2][index].count = payload.count
-		}
-	}
+    state.shopCart.forEach((item1,index1)=>{
+      item1.forEach((item,index)=>{
+        if(item.id == payload.id){
+          item.count = payload.count
+          if(item.count <= 0){
+            console.log(index)
+            item1.splice(index,1)
+            if(item1.length == 0){
+              state.shopCart.splice(index1,1)
+            }
+          }
+        }
+      })
+    })
+  }
 }

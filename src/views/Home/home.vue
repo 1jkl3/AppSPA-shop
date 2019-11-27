@@ -133,7 +133,6 @@
 			this.$nextTick(()=>{
 				setTimeout(()=>{
 					this.tabloadoffsetTop=this.$refs.tabcoll.$el.offsetTop
-					console.log(this.tabloadoffsetTop)
 				},100)
 			})
 		},
