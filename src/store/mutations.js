@@ -6,7 +6,7 @@ export default {
 	},
   //添加商品
   [ADD_COMMODITY](state,payload){
-     state.shopCart[payload.code].unshift(payload.date)
+     state.shopCart[payload.code].push(payload.date)
   },
   //添加商品数量
 	[ADD_COUNT](state,payload){
@@ -14,13 +14,11 @@ export default {
 	},
 	//全选控件
 	[CHECK_ALL](state,payload){
-		if(payload){
-			state.shopCart.forEach(item=>{
-				item.forEach(item2=>{
-					item2.checked = payload
-				})
+		state.shopCart.forEach(item=>{
+			item.forEach(item2=>{
+				item2.checked = payload
 			})
-		}
+		})	
 	},
 	//店铺全选
 	[CHECK_SHOP](state,payload){

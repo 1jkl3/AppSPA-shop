@@ -1,10 +1,10 @@
 <template>
 	<div class="cart-collect">
 		<div class="cart-collect-one">
-			<check-button :isChecked="isCheckedAll" :islabel="islabel" @CheckedBom="alterCheckedBom"/>
+			<check-button :isChecked="isCheckedAll" @CheckedBom="alterCheckedBom"/>
 		</div>
 		<div class="cart-collect-two">
-			<div><span>合计：￥{{count_Money}}</span></div>
+			<div><span>合计：￥{{count_Money}}元</span></div>
 		</div>
 		<div class="cart-collect-there" @click="toShoping">
 			<span>合算</span>
@@ -31,17 +31,14 @@
 			isCheckedAll(){
 				let ischeck = false
 				if(this.get_cart_length === 0) return this.isCheckedAtler
-				this.get_cart.forEach(item=>{
-					ischeck = item.every(item1 => item1.checked)
-				})
-				return ischeck
+				return this.get_cart.every(item=> item.every(item1 => item1.checked))
 			},
 			count_Money(){
 				var num = 0;
 				this.get_cart.forEach(item => {
 					item.forEach(item2=>{
 						if(item2.checked){
-							num+=item2.price
+							num+=item2.price*item2.count
 						}
 					})
 				})
@@ -71,7 +68,7 @@
 				}
 			},
 			toShoping(){
-				
+
 			}
 		}
 	}

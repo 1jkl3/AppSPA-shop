@@ -1,7 +1,7 @@
 <template>
 	<div class="check-button">
 		<input id="che" type="radio" :checked="isChecked" @click="alterCheckedBom"/>
-		<label v-if="islabel" for="che" class="label-check">全选</label>
+		<!-- <label v-if="islabel" for="che" class="label-check">全选</label> -->
 	</div>
 </template>
 

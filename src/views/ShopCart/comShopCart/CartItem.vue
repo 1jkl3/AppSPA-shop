@@ -12,10 +12,10 @@
 			</div>
 			<div class="cart-shops" v-for="(item,index) in listItem" :key="index">
 				<div class="shops-check">
-					<check-button :isChecked="item.checked" :shop_Id="item.id" @CheckedBom="alterCheckedBom" />
+					<check-button :isChecked="item.checked" @CheckedBom="alterCheckedBom(item.id)" />
 				</div>
 				<div class="shops-img">
-					<img :src="require('@/assets/'+item.img)" />
+					<img v-lazy="require('@/assets/'+item.img)" />
 				</div>
 				<div class="shops-info">
 					<div class="shop-item-title">
@@ -76,14 +76,13 @@
 				}
 			},
 			//商品选择
-			alterCheckedBom(obj){
-				obj.checked = !obj.checked
-				this.$store.commit("check_item",obj)
-				// this.listItem.forEach(item=>{
-				// 	if(item.id == obj.id){
-				// 		this.$store.commit("check_item",item)
-				// 	}
-				// })
+			alterCheckedBom(id){
+        this.listItem.map(item=>{
+          if(item.id == id){
+            item.checked = !item.checked
+            this.$store.commit("check_item",item)
+          }
+        })
 			},
 			lessenCount(id){
 				this.listItem.map(item=>{
@@ -171,7 +170,7 @@
 	}
 	.shop-item-title{
 		flex: 1;
-		word-break:normal; 
+		word-break:normal;
 		word-wrap : break-word ;
 	}
 	.shop-item-price{
