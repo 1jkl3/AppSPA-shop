@@ -3,9 +3,9 @@
 		<category-nav />
 		<div class="cate-gory-main">
 			<common-scroll class="left-scroll" ref="leftScroll">
-				<category-left :leftInfo="leftInfo" @SkipCate="toType"/>
+				<category-left :leftInfo="leftInfo" :current="currentindex" @SkipCate="toType"/>
 			</common-scroll>
-			<common-scroll class="rigth-scroll" ref="scroll" :listenScroll="true">
+			<common-scroll class="rigth-scroll" ref="scroll" :listenScroll="true" @scroll="scrollH">
 				<category-right :rightInfo="rightInfo" @infoTop="Topto"/>
 			</common-scroll>
 		</div>
@@ -25,7 +25,8 @@
 			return {
 				leftInfo:[],
 				rightInfo:[],
-				rightTop:[]
+				rightTop:[],
+				currentindex:0
 			}
 		},
 		mixins:[imgLoadMIXIN],
@@ -39,58 +40,58 @@
 			toType(index){
 				switch (index){
 					case 0:
-					this.$refs.scroll.scrollTo(0,this.rightTop[index],100)
+					this.$refs.scroll.scrollTo(0,this.rightTop[index])
 						break;
 					case 1:
-					this.$refs.scroll.scrollTo(0,this.rightTop[index],100)
+					this.$refs.scroll.scrollTo(0,this.rightTop[index])
 						break;
 					case 2:
-					this.$refs.scroll.scrollTo(0,this.rightTop[index],100)
+					this.$refs.scroll.scrollTo(0,this.rightTop[index])
 						break;
 					case 3:
-					this.$refs.scroll.scrollTo(0,this.rightTop[index],100)
+					this.$refs.scroll.scrollTo(0,this.rightTop[index])
 						break;
 					case 4:
-					this.$refs.scroll.scrollTo(0,this.rightTop[index],100)
+					this.$refs.scroll.scrollTo(0,this.rightTop[index])
 						break;
 					case 5:
-					this.$refs.scroll.scrollTo(0,this.rightTop[index],100)
+					this.$refs.scroll.scrollTo(0,this.rightTop[index])
 						break;
 					case 6:
-					this.$refs.scroll.scrollTo(0,this.rightTop[index],100)
+					this.$refs.scroll.scrollTo(0,this.rightTop[index])
 						break;
 					case 7:
-					this.$refs.scroll.scrollTo(0,this.rightTop[index],100)
+					this.$refs.scroll.scrollTo(0,this.rightTop[index])
 						break;
 					case 8:
-					this.$refs.scroll.scrollTo(0,this.rightTop[index],100)
+					this.$refs.scroll.scrollTo(0,this.rightTop[index])
 						break;
 					case 9:
-					this.$refs.scroll.scrollTo(0,this.rightTop[index],100)
+					this.$refs.scroll.scrollTo(0,this.rightTop[index])
 						break;
 					case 10:
-					this.$refs.scroll.scrollTo(0,this.rightTop[index],100)
+					this.$refs.scroll.scrollTo(0,this.rightTop[index])
 						break;
 					case 11:
-					this.$refs.scroll.scrollTo(0,this.rightTop[index],100)
+					this.$refs.scroll.scrollTo(0,this.rightTop[index])
 						break;
 					case 12:
-					this.$refs.scroll.scrollTo(0,this.rightTop[index],100)
+					this.$refs.scroll.scrollTo(0,this.rightTop[index])
 						break;
 					case 13:
-					this.$refs.scroll.scrollTo(0,this.rightTop[index],100)
+					this.$refs.scroll.scrollTo(0,this.rightTop[index])
 						break;
 					case 14:
-					this.$refs.scroll.scrollTo(0,this.rightTop[index],100)
+					this.$refs.scroll.scrollTo(0,this.rightTop[index])
 						break;
 					case 15:
-					this.$refs.scroll.scrollTo(0,this.rightTop[index],100)
+					this.$refs.scroll.scrollTo(0,this.rightTop[index])
 						break;
 					case 16:
-					this.$refs.scroll.scrollTo(0,this.rightTop[index],100)
+					this.$refs.scroll.scrollTo(0,this.rightTop[index])
 						break;
 					case 17:
-					this.$refs.scroll.scrollTo(0,this.rightTop[index],100)
+					this.$refs.scroll.scrollTo(0,this.rightTop[index])
 						break;
 					default:
 						break;
@@ -98,6 +99,45 @@
 			},
 			Topto(top){
 				this.rightTop.push(...top)
+			},
+			scrollH(options){
+				if(options.y >= this.rightTop[0]){
+					this.currentindex = 0
+				}else if(options.y >= this.rightTop[1]){
+					this.currentindex = 1
+				}else if(options.y >= this.rightTop[2]){
+					this.currentindex = 2
+				}else if(options.y >= this.rightTop[3]){
+					this.currentindex = 3
+				}else if(options.y >= this.rightTop[4]){
+					this.currentindex = 4
+				}else if(options.y >= this.rightTop[5]){
+					this.currentindex = 5
+				}else if(options.y >= this.rightTop[6]){
+					this.currentindex = 6
+				}else if(options.y >= this.rightTop[7]){
+					this.currentindex = 7
+				}else if(options.y >= this.rightTop[8]){
+					this.currentindex = 8
+				}else if(options.y >= this.rightTop[9]){
+					this.currentindex = 9
+				}else if(options.y >= this.rightTop[10]){
+					this.currentindex = 10
+				}else if(options.y >= this.rightTop[11]){
+					this.currentindex = 11
+				}else if(options.y >= this.rightTop[12]){
+					this.currentindex = 12
+				}else if(options.y >= this.rightTop[13]){
+					this.currentindex = 13
+				}else if(options.y >= this.rightTop[14]){
+					this.currentindex = 14
+				}else if(options.y >= this.rightTop[15]){
+					this.currentindex = 15
+				}else if(options.y >= this.rightTop[16]){
+					this.currentindex = 16
+				}else{
+					this.currentindex = 17
+				}
 			}
 		},
 		created(){

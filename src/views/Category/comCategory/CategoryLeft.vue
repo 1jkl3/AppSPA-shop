@@ -14,6 +14,12 @@
 			leftInfo:{
 				type:Array,
 				default:null
+			},
+			current:Number
+		},
+		watch:{
+			current:function(val,oldval){
+				this.SelectBtn(val)
 			}
 		},
 		data(){

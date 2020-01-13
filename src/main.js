@@ -20,10 +20,11 @@ Vue.use(toast)
 FastClick.attach(document.body)
 //导入懒加载插件
 Vue.use(VueLazyLoad)
-const originalPush = Router.prototype.push
-Router.prototype.push = function push(location) {
-  return originalPush.call(this, location).catch(err => err)
-}
+//
+// const originalPush = Router.prototype.push
+// Router.prototype.push = function push(location) {
+//   return originalPush.call(this, location).catch(err => err)
+// }
 new Vue({
   router,
   store,
